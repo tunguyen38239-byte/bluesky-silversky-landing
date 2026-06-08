@@ -1,0 +1,3442 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BlueSky Travel & SilverSky | Vé máy bay, Combo & Du lịch cho Đại lý</title>
+  <meta name="description" content="Đối tác vé máy bay, combo vé + khách sạn và tour du lịch trọn gói cho đại lý và công ty du lịch.">
+  <link rel="preload" as="image" href="banner%20Blue%20%26%20Sky.png">
+  <style>
+    :root {
+      --navy: #102a43;
+      --blue: #1f7ae0;
+      --teal: #0f9f9a;
+      --green: #2f8f5b;
+      --gold: #f2b84b;
+      --red: #d85645;
+      --ink: #17212b;
+      --muted: #607080;
+      --line: #dce6ef;
+      --paper: #ffffff;
+      --soft: #f9fafb;
+      --mist: #eaf6f3;
+      --shadow: 0 18px 48px rgba(16, 42, 67, 0.14);
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--paper);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: none;
+    }
+
+    .social-sidebar {
+      position: fixed;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      padding: 20px 10px;
+    }
+
+    .social-sidebar a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transition: color 0.2s;
+    }
+
+    .social-sidebar a:hover {
+      color: #ffffff;
+    }
+
+    .social-sidebar svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      stroke: none;
+    }
+
+    .social-sidebar .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      padding: 14px 24px;
+      background: transparent;
+      transition: transform 0.35s ease;
+    }
+
+    .nav {
+      position: relative;
+      max-width: var(--max);
+      margin: 0 auto;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 0 14px 0 24px;
+      background: rgba(15, 23, 42, 0.35);
+      backdrop-filter: blur(20px) saturate(1.8);
+      -webkit-backdrop-filter: blur(20px) saturate(1.8);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+    }
+
+    .nav::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .brand img {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 14.5px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
+    .links a {
+      padding: 8px 16px;
+      border-radius: 999px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .links a:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .menu {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      cursor: pointer;
+    }
+
+    .menu span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      margin: 4px auto;
+      border-radius: 4px;
+      background: #ffffff;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .nav .btn {
+      min-height: 42px;
+      padding: 0 26px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-primary {
+      color: #ffffff;
+      background: #3b5bff;
+      box-shadow: 0 4px 18px rgba(59, 91, 255, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: #2d4de6;
+      box-shadow: 0 6px 24px rgba(59, 91, 255, 0.45);
+    }
+
+    .btn-secondary {
+      color: var(--navy);
+      background: #ffffff;
+      border-color: var(--line);
+    }
+
+    .hero-wrapper {
+      position: relative;
+      z-index: 2;
+      background: #0a1929;
+      padding-bottom: 0;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: #ffffff;
+      overflow: visible;
+      padding-bottom: 0;
+    }
+
+    .hero-slides,
+    .hero-overlay {
+      overflow: hidden;
+    }
+
+    .hero-slides {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-color: #0a1929;
+      opacity: 0;
+      animation: heroSlide 24s infinite;
+      backface-visibility: hidden;
+    }
+
+    .hero-slide:nth-child(1) { animation-delay: 0s; }
+    .hero-slide:nth-child(2) { animation-delay: 6s; }
+    .hero-slide:nth-child(3) { animation-delay: 12s; }
+    .hero-slide:nth-child(4) { animation-delay: 18s; }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(90deg, rgba(9, 31, 52, 0.85), rgba(9, 31, 52, 0.6) 50%, rgba(9, 31, 52, 0.15));
+    }
+
+    .hero > .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes heroSlide {
+      0%    { opacity: 0; }
+      4%    { opacity: 1; }
+      25%   { opacity: 1; }
+      29%   { opacity: 0; }
+      100%  { opacity: 0; }
+    }
+
+    .hero-content {
+      max-width: 760px;
+      padding: 86px 0 40px;
+      text-shadow: 0 2px 16px rgba(0, 20, 60, 0.5);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.12);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin: 22px 0 18px;
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    .hero p {
+      max-width: 690px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 28px 0 34px;
+    }
+
+    .hero .btn-secondary {
+      border-color: transparent;
+      background: rgba(255, 255, 255, 0.94);
+    }
+
+    .metrics {
+      position: relative;
+      z-index: 4;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 28px;
+      margin-top: 10px;
+      perspective: 900px;
+    }
+
+    .metric {
+      position: relative;
+      overflow: visible;
+      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.3))
+              drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  filter 0.4s ease;
+      transform-origin: center center;
+      will-change: transform;
+    }
+
+    .metric:hover {
+      transform: translateY(-8px) scale(1.03);
+      filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.35))
+              drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2));
+      z-index: 5;
+    }
+
+    .metric img { display: none; }
+
+    .bp {
+      position: relative;
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 42% 1fr;
+      aspect-ratio: 2 / 1;
+      -webkit-mask-image: radial-gradient(circle 5px at right, transparent 4.5px, black 5px);
+      -webkit-mask-size: 100% 14px;
+      -webkit-mask-repeat: repeat-y;
+      mask-image: radial-gradient(circle 5px at right, transparent 4.5px, black 5px);
+      mask-size: 100% 14px;
+      mask-repeat: repeat-y;
+    }
+
+    .bp-main, .bp-tear, .bp-hole-top, .bp-hole-bottom, .bp-stub { display: none; }
+
+    .bp-photo {
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      margin: 5px;
+    }
+
+    .bp-info {
+      padding: 7px 10px 7px 6px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+    }
+
+    .bp-badge {
+      align-self: flex-end;
+      padding: 3px 10px;
+      background: #2d3a8c;
+      color: #ffffff;
+      font-size: 7px;
+      font-weight: 700;
+      border-radius: 4px;
+      letter-spacing: 0.03em;
+    }
+
+    .bp-dest-label {
+      font-size: 7px;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .bp-city {
+      font-size: clamp(12px, 1.4vw, 18px);
+      font-weight: 900;
+      color: #0f172a;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .bp-country {
+      font-size: clamp(8px, 0.9vw, 12px);
+      font-weight: 800;
+      color: #2d3a8c;
+    }
+
+    .bp-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .bp-date {
+      font-size: 6px;
+      color: #64748b;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .bp-date i {
+      display: block;
+      font-style: italic;
+      font-size: 8px;
+      color: #334155;
+      font-weight: 700;
+    }
+
+    .bp-barcode {
+      display: flex;
+      gap: 1px;
+      align-items: flex-end;
+      height: 20px;
+    }
+
+    .bp-barcode span {
+      display: block;
+      width: 1.5px;
+      background: #1e293b;
+      border-radius: 0.5px;
+    }
+
+    .metric-stat {
+      text-align: center;
+      margin-top: 10px;
+      padding: 0;
+    }
+
+    .stat-number {
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .stat-suffix {
+      font-size: clamp(22px, 2.5vw, 34px);
+      font-weight: 900;
+      color: #ffffff;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .stat-label {
+      display: block;
+      margin-top: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+    }
+
+    .section {
+      padding: 84px 0;
+    }
+
+    .section-intro {
+      background: var(--paper);
+      padding-top: 48px;
+    }
+
+    .section-soft {
+      background: var(--soft);
+    }
+
+    .section-mist {
+      background: var(--mist);
+    }
+
+    .section-blue {
+      background: linear-gradient(135deg, rgba(16, 42, 67, 0.55), rgba(31, 122, 224, 0.45)),
+        url("Vivu.jpg") center / cover no-repeat;
+    }
+
+    .section-blue .kicker {
+      color: #ffffff;
+      border-bottom-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .section-blue h2 {
+      color: #ffffff;
+    }
+
+    .section-blue .lead {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 38px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .kicker {
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--blue);
+      display: inline-block;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      color: var(--blue);
+      font-size: clamp(22px, 2.5vw, 30px);
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .intro-grid h2 {
+      font-size: clamp(24px, 2.8vw, 32px);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+    }
+
+    .intro-copy {
+      color: #314255;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .advantage-grid,
+    .policy-grid,
+    .product-grid,
+    .support-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .advantage-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 44px;
+    }
+
+    .advantage-grid .card {
+      position: relative;
+      overflow: hidden;
+      color: #ffffff;
+    }
+
+    .advantage-grid .card::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      opacity: 0.15;
+      right: -30px;
+      bottom: -30px;
+      background: rgba(255, 255, 255, 0.4);
+      filter: blur(25px);
+    }
+
+    .advantage-grid .card::after {
+      content: "";
+      position: absolute;
+      right: -5px;
+      bottom: -5px;
+      width: 70px;
+      height: 70px;
+      opacity: 0.18;
+      background: no-repeat center / contain;
+    }
+
+    .advantage-grid .card:nth-child(1)::after {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='72' rx='30' ry='8' fill='white' opacity='0.4'/%3E%3Crect x='28' y='25' width='44' height='48' rx='8' fill='white'/%3E%3Crect x='34' y='20' width='32' height='10' rx='5' fill='white' opacity='0.7'/%3E%3Ccircle cx='50' cy='45' r='12' fill='rgba(0,0,0,0.15)'/%3E%3Cpath d='M50 37v16M55 41h-7a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-7' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3Crect x='36' y='62' width='28' height='3' rx='1.5' fill='rgba(0,0,0,0.1)'/%3E%3C/svg%3E");
+    }
+
+    .advantage-grid .card:nth-child(2)::after {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='35' cy='30' r='12' fill='white'/%3E%3Cellipse cx='35' cy='58' rx='18' ry='14' fill='white'/%3E%3Ccircle cx='68' cy='35' r='10' fill='white' opacity='0.7'/%3E%3Cellipse cx='68' cy='58' rx='15' ry='12' fill='white' opacity='0.7'/%3E%3Ccircle cx='52' cy='22' r='8' fill='white' opacity='0.5'/%3E%3Cellipse cx='52' cy='52' rx='12' ry='10' fill='white' opacity='0.5'/%3E%3Crect x='20' y='75' width='60' height='4' rx='2' fill='white' opacity='0.3'/%3E%3C/svg%3E");
+    }
+
+    .advantage-grid .card:nth-child(3)::after {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='80' rx='28' ry='6' fill='white' opacity='0.3'/%3E%3Cpath d='M50 15 C52 15 55 17 55 20 L55 45 L75 58 L75 62 L55 52 L55 70 L62 74 L62 77 L50 73 L38 77 L38 74 L45 70 L45 52 L25 62 L25 58 L45 45 L45 20 C45 17 48 15 50 15Z' fill='white'/%3E%3C/svg%3E");
+    }
+
+    .advantage-grid .card {
+      background: linear-gradient(135deg, #4d9df7 0%, #1a6dd4 100%);
+    }
+
+    .advantage-grid .card h3 { color: #ffffff; }
+    .advantage-grid .card p { color: rgba(255, 255, 255, 0.85); }
+    .advantage-grid .card .icon {
+      background: rgba(255, 255, 255, 0.2) !important;
+    }
+
+
+    .policy-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .product-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .support-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .card,
+    .policy-card,
+    .product-card,
+    .support-card {
+      border: none;
+      border-radius: 22px;
+      background: #ffffff;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .card {
+      padding: 18px 18px;
+    }
+
+    .policy-card,
+    .support-card {
+      padding: 22px;
+    }
+
+    .icon {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      color: #ffffff;
+      background: var(--teal);
+    }
+
+    .icon svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .card h3,
+    .policy-card h3,
+    .product-card h3,
+    .support-card h3 {
+      margin-bottom: 6px;
+      color: var(--blue);
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    .card p,
+    .policy-card p,
+    .support-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .ops-panel {
+      padding: 32px 28px;
+      border: none;
+      border-radius: 22px;
+      background: #ffffff;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+      min-width: 0;
+    }
+
+    .ops-head {
+      margin-bottom: 28px;
+    }
+
+    .ops-head b {
+      display: block;
+      color: var(--blue);
+      font-size: 20px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .ops-head span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 15px;
+      font-style: italic;
+    }
+
+    .ops-steps {
+      display: grid;
+      gap: 0;
+    }
+
+    .ops-step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 16px;
+      position: relative;
+      padding-bottom: 28px;
+    }
+
+    .ops-step:last-child {
+      padding-bottom: 0;
+    }
+
+    .ops-step::before {
+      content: "";
+      position: absolute;
+      left: 23px;
+      top: 48px;
+      bottom: 0;
+      width: 2px;
+      background: var(--line);
+    }
+
+    .ops-step:last-child::before {
+      display: none;
+    }
+
+    .ops-num {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 900;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ops-step:nth-child(2) .ops-num { background: var(--teal); }
+    .ops-step:nth-child(3) .ops-num { background: var(--green); }
+    .ops-step:nth-child(4) .ops-num { background: var(--gold); }
+
+    .ops-body {
+      padding-top: 4px;
+    }
+
+    .ops-body b {
+      display: block;
+      color: var(--navy);
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .ops-body span {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .ops-steps-horizontal {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .ops-step-h {
+      position: relative;
+      text-align: center;
+      padding-top: 12px;
+    }
+
+    .ops-step-h .ops-num {
+      margin: 0 auto 12px;
+    }
+
+    .ops-step-h .ops-body {
+      padding-top: 0;
+    }
+
+    .ops-step-h .ops-body b {
+      font-size: 15px;
+    }
+
+    .ops-step-h .ops-body span {
+      font-size: 13px;
+    }
+
+    .ops-step-h::after {
+      content: "";
+      position: absolute;
+      top: 36px;
+      left: calc(50% + 32px);
+      right: calc(-50% + 32px);
+      height: 2px;
+      background: var(--line);
+    }
+
+    .ops-step-h:last-child::after {
+      display: none;
+    }
+
+    .ops-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+
+    .ops-tl-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding-bottom: 24px;
+      position: relative;
+    }
+
+    .ops-tl-step:last-child {
+      padding-bottom: 0;
+    }
+
+    .ops-tl-step::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 40px;
+      bottom: 0;
+      width: 2px;
+      background: var(--line);
+    }
+
+    .ops-tl-step:last-child::before {
+      display: none;
+    }
+
+    .ops-tl-dot {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ops-tl-content {
+      padding-top: 4px;
+    }
+
+    .ops-tl-content b {
+      display: block;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+
+    .ops-tl-content span {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .intro-illustration {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: sticky;
+      top: 80px;
+      transform: scale(0.9);
+      transform-origin: top right;
+    }
+
+    .ticket-visual {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ticket-header {
+      background: var(--blue);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ticket-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .ticket-stripe {
+      width: 40px;
+      height: 24px;
+      background: repeating-linear-gradient(-45deg, transparent, transparent 3px, rgba(255,255,255,0.3) 3px, rgba(255,255,255,0.3) 6px);
+      border-radius: 4px;
+    }
+
+    .ticket-hero-img {
+      position: relative;
+      aspect-ratio: 16 / 8;
+      overflow: hidden;
+    }
+
+    .ticket-img-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      animation: heroSlide 24s infinite;
+      backface-visibility: hidden;
+    }
+
+    .ticket-img-slide:nth-child(1) { animation-delay: 0s; }
+    .ticket-img-slide:nth-child(2) { animation-delay: 6s; }
+    .ticket-img-slide:nth-child(3) { animation-delay: 12s; }
+    .ticket-img-slide:nth-child(4) { animation-delay: 18s; }
+
+    .ticket-overlay-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.25);
+      color: #fff;
+      text-align: center;
+    }
+
+    .ticket-small {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .ticket-big {
+      font-size: clamp(32px, 4vw, 42px);
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      text-shadow: 0 3px 16px rgba(0,0,0,0.4);
+    }
+
+    .ticket-promo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: 0.04em;
+    }
+
+    .ticket-arrow {
+      font-size: 20px;
+      color: var(--blue);
+    }
+
+    .ticket-tear {
+      height: 0;
+      border-top: 2px dashed #cbd5e1;
+      margin: 0 16px;
+      position: relative;
+    }
+
+    .ticket-tear::before,
+    .ticket-tear::after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--paper);
+    }
+
+    .ticket-tear::before { left: -26px; }
+    .ticket-tear::after  { right: -26px; }
+
+    .ticket-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 10px 20px;
+    }
+
+    .ticket-col small {
+      display: block;
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .ticket-col b {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+
+    .ticket-footer {
+      padding: 8px 20px 12px;
+      text-align: center;
+    }
+
+    .ticket-footer span {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .ticket-barcode {
+      height: 24px;
+    }
+
+    .ticket-barcode svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .laptop-mockup {
+      position: relative;
+      width: 100%;
+    }
+
+    .laptop-frame {
+      width: 100%;
+      display: block;
+      position: relative;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .laptop-content {
+      position: absolute;
+      top: 5.2%;
+      left: 11.8%;
+      right: 12.2%;
+      bottom: 24.8%;
+      overflow: hidden;
+      border-radius: 4px;
+      z-index: 3;
+    }
+
+    .laptop-content .demo-screen {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: auto;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .laptop-content .demo-body {
+      flex: 1;
+      min-height: 0;
+    }
+
+    .demo-screen {
+      position: relative;
+      background: #0f172a;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    }
+
+    .ops-steps-2x2 .ops-step-h:nth-child(2)::after,
+    .ops-steps-2x2 .ops-step-h:nth-child(4)::after {
+      display: none;
+    }
+
+    @media (min-width: 1041px) {
+      .intro-grid .laptop-mockup .demo-body {
+        flex: 1;
+      }
+    }
+
+    .demo-topbar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 14px;
+      background: #1e293b;
+    }
+
+    .demo-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #475569;
+    }
+    .demo-dot:first-child { background: #ef4444; }
+    .demo-dot:nth-child(2) { background: #eab308; }
+    .demo-dot:nth-child(3) { background: #22c55e; }
+
+    .demo-topbar span {
+      flex: 1;
+      text-align: center;
+      font-size: 11px;
+      color: #94a3b8;
+      letter-spacing: 0.03em;
+    }
+
+    .demo-body {
+      position: relative;
+      height: calc(100% - 32px);
+      overflow: hidden;
+    }
+
+    .demo-slide {
+      position: absolute;
+      inset: 0;
+      padding: 18px 16px;
+      opacity: 0;
+      animation: demoSlide 16s infinite;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .demo-slide:nth-child(1) { animation-delay: 0s; }
+    .demo-slide:nth-child(2) { animation-delay: 4s; }
+    .demo-slide:nth-child(3) { animation-delay: 8s; }
+    .demo-slide:nth-child(4) { animation-delay: 12s; }
+
+    @keyframes demoSlide {
+      0%   { opacity: 0; transform: translateY(10px); }
+      3%   { opacity: 1; transform: translateY(0); }
+      25%  { opacity: 1; transform: translateY(0); }
+      28%  { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 0; }
+    }
+
+    .demo-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #94a3b8;
+    }
+
+    .demo-label i {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-style: normal;
+      font-size: 10px;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .demo-slide:nth-child(1) .demo-label i { background: var(--blue); }
+    .demo-slide:nth-child(2) .demo-label i { background: var(--teal); }
+    .demo-slide:nth-child(3) .demo-label i { background: var(--green); }
+    .demo-slide:nth-child(4) .demo-label i { background: var(--gold); }
+
+    .demo-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .demo-field {
+      flex: 1;
+      background: #1e293b;
+      border-radius: 8px;
+      padding: 8px 10px;
+    }
+
+    .demo-field small {
+      display: block;
+      font-size: 9px;
+      color: #64748b;
+      margin-bottom: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .demo-field span {
+      display: block;
+      font-size: 12px;
+      color: #e2e8f0;
+      font-weight: 600;
+    }
+
+    .demo-card {
+      background: #1e293b;
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+
+    .demo-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .demo-card-head b {
+      font-size: 12px;
+      color: #e2e8f0;
+    }
+
+    .demo-card-head em {
+      font-style: normal;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .demo-tag-blue { background: rgba(59,130,246,0.2); color: #60a5fa; }
+    .demo-tag-green { background: rgba(34,197,94,0.2); color: #4ade80; }
+    .demo-tag-gold { background: rgba(234,179,8,0.2); color: #facc15; }
+
+    .demo-card-detail {
+      display: flex;
+      gap: 12px;
+      font-size: 10px;
+      color: #94a3b8;
+    }
+
+    .demo-bar {
+      height: 4px;
+      border-radius: 2px;
+      background: #334155;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .demo-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      animation: barGrow 16s infinite;
+    }
+
+    .demo-slide:nth-child(1) .demo-bar-fill { background: var(--blue); animation-delay: 0s; }
+    .demo-slide:nth-child(2) .demo-bar-fill { background: var(--teal); animation-delay: 4s; }
+    .demo-slide:nth-child(3) .demo-bar-fill { background: var(--green); animation-delay: 8s; }
+    .demo-slide:nth-child(4) .demo-bar-fill { background: var(--gold); animation-delay: 12s; }
+
+    @keyframes barGrow {
+      0%, 3% { width: 0; }
+      22%    { width: 100%; }
+      25%, 100% { width: 100%; }
+    }
+
+    .demo-msg {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .demo-avatar {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 10px;
+      color: #fff;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .demo-bubble {
+      background: #1e293b;
+      border-radius: 0 10px 10px 10px;
+      padding: 8px 10px;
+      font-size: 11px;
+      color: #cbd5e1;
+      line-height: 1.5;
+      max-width: 85%;
+    }
+
+    .demo-bubble.right {
+      margin-left: auto;
+      background: rgba(59,130,246,0.15);
+      border-radius: 10px 0 10px 10px;
+      color: #93c5fd;
+    }
+
+    .demo-check {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #4ade80;
+    }
+
+    .demo-check svg {
+      width: 14px; height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.5;
+    }
+
+    .market-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 28px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .market {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .market-window {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 5 / 6;
+      overflow: hidden;
+    }
+
+    .market-scene {
+      position: absolute;
+      inset: 16%;
+      border-radius: 36% 36% 34% 34% / 28% 28% 26% 26%;
+      overflow: hidden;
+      background: #dbeafe;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.5s ease;
+    }
+
+    .market:hover .market-scene {
+      transform: scale(1.08);
+    }
+
+    .market-scene.scene-japan {
+      background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=400&q=80');
+    }
+
+    .market-scene.scene-korea {
+      background-image: url('https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=400&q=80');
+    }
+
+    .market-scene.scene-taiwan {
+      background-image: url('https://images.unsplash.com/photo-1470004914212-05527e49370b?w=400&q=80');
+    }
+
+    .market-scene.scene-europe {
+      background-image: url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=400&q=80');
+    }
+
+    .market-frame {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .market-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+
+    .market-label {
+      position: absolute;
+      inset: 16%;
+      border-radius: 36% 36% 34% 34% / 28% 28% 26% 26%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 6px;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(1px);
+      -webkit-backdrop-filter: blur(1px);
+      color: var(--navy);
+      z-index: 3;
+      transition: background 0.3s ease;
+      text-align: center;
+    }
+
+    .market-label b {
+      display: block;
+      font-size: 11px;
+      line-height: 1.2;
+      color: #fff;
+    }
+
+    .market-label span {
+      display: block;
+      margin-top: 1px;
+      font-size: 8px;
+      font-weight: 600;
+      line-height: 1.3;
+      color: #fff;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .tab-btn {
+      min-height: 42px;
+      padding: 0 15px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--navy);
+      background: #ffffff;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      color: #ffffff;
+      border-color: var(--blue);
+      background: var(--blue);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .xkld-card {
+      padding: 28px 32px;
+    }
+
+    .xkld-card h3 {
+      margin-bottom: 6px;
+    }
+
+    .xkld-sub {
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .check-list.xkld-list {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px 32px;
+    }
+
+    .combo-bento {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-auto-rows: 280px;
+      gap: 16px;
+    }
+    .combo-bento .bento-card:nth-child(1) { grid-column: span 4; }
+    .combo-bento .bento-card:nth-child(2) { grid-column: span 2; }
+    .combo-bento .bento-card:nth-child(n+3) { grid-column: span 2; }
+
+    .bento-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .bento-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .bento-card:hover img {
+      transform: scale(1.05);
+    }
+    .bento-card .bento-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.55) 100%);
+    }
+    .bento-card .bento-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px;
+    }
+    .bento-card .bento-name {
+      font-size: 22px;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+    .bento-card .bento-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.9);
+      margin-top: 4px;
+    }
+    .bento-card .bento-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .explore-wrap {
+      position: relative;
+    }
+    .explore-row {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 4px;
+    }
+    .explore-row::-webkit-scrollbar { display: none; }
+    .explore-card {
+      flex: 0 0 180px;
+      cursor: pointer;
+    }
+    .explore-card img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: box-shadow 0.3s;
+    }
+    .explore-card:hover img {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    .explore-card h4 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 10px;
+      color: var(--navy);
+    }
+    .explore-card span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .explore-btn {
+      position: absolute;
+      top: 80px;
+      right: -8px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+    .explore-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--navy);
+      fill: none;
+      stroke-width: 2.5;
+    }
+
+    .product-card {
+      overflow: hidden;
+      border-radius: 16px;
+      background: #ffffff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .product-head {
+      display: none;
+    }
+
+    .flight-card {
+      padding: 24px 28px;
+      border-bottom: 1px dashed #e5e7eb;
+    }
+
+    .flight-card:last-child {
+      border-bottom: none;
+    }
+
+    .flight-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 16px;
+    }
+
+    .flight-code {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--blue);
+    }
+
+    .flight-tag {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .flight-tag.du-hoc {
+      color: var(--blue);
+      background: rgba(31, 122, 224, 0.1);
+    }
+
+    .flight-route {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .flight-point {
+      text-align: center;
+      min-width: 80px;
+    }
+
+    .flight-city {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .flight-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .flight-line {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 12px;
+      position: relative;
+    }
+
+    .flight-line::before {
+      content: "";
+      width: 100%;
+      height: 0;
+      border-top: 2px dashed #d1d5db;
+      position: absolute;
+      top: 50%;
+    }
+
+    .flight-line .plane-icon {
+      position: relative;
+      z-index: 1;
+      width: 28px;
+      height: 28px;
+      color: var(--navy);
+    }
+
+    .flight-dot-left,
+    .flight-dot-right {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .flight-dot-left {
+      left: 0;
+      background: var(--teal);
+    }
+
+    .flight-dot-right {
+      right: 0;
+      background: var(--teal);
+    }
+
+    .flight-note {
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .product-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+      padding: 22px;
+    }
+
+    .list-title {
+      margin-bottom: 10px;
+      color: var(--navy);
+      font-weight: 900;
+    }
+
+    .clean-list,
+    .check-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #314255;
+    }
+
+    .clean-list li {
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: var(--soft);
+      font-weight: 700;
+    }
+
+    .check-list li {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .check-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .check-list li::after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 10px;
+      width: 6px;
+      height: 3px;
+      border-left: 2px solid #ffffff;
+      border-bottom: 2px solid #ffffff;
+      transform: rotate(-45deg);
+    }
+
+    .cta {
+      color: #ffffff;
+      background-color: #091f34;
+      background-image:
+        linear-gradient(90deg, rgba(9, 31, 52, 0.92) 0%, rgba(9, 31, 52, 0.7) 45%, rgba(9, 31, 52, 0.3) 100%),
+        url("%E1%BA%A3nh%20n%E1%BB%81n%20li%C3%AAn%20h%E1%BB%87.jpg");
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .cta h2 {
+      color: #ffffff;
+      margin-bottom: 18px;
+    }
+
+    .cta p {
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 17px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .contact-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: #ffffff;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .contact-item b {
+      display: block;
+      line-height: 1.2;
+    }
+
+    .contact-item span {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 14px;
+    }
+
+    .form {
+      padding: 28px;
+      border-radius: 8px;
+      background: #ffffff;
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      margin-top: 40px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: var(--navy);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 46px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: #ffffff;
+      font: inherit;
+      font-size: 16px;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 112px;
+      padding-top: 12px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(31, 122, 224, 0.14);
+    }
+
+    .form-note {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer {
+      padding: 28px 0;
+      color: rgba(255, 255, 255, 0.9);
+      background: var(--blue);
+      font-size: 14px;
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Floating Contact Icons */
+    .floating-contact {
+      position: fixed;
+      right: 20px;
+      bottom: 100px;
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .fc-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #ffffff;
+      color: var(--blue);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .fc-btn:hover {
+      transform: scale(1.12);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .fc-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: var(--blue);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .fc-zalo-text {
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--blue);
+    }
+
+    @media (max-width: 720px) {
+      .floating-contact {
+        right: 10px;
+        bottom: 72px;
+        gap: 10px;
+      }
+
+      .fc-btn {
+        width: 42px;
+        height: 42px;
+      }
+
+      .fc-btn svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .fc-zalo-text {
+        font-size: 11px;
+      }
+    }
+
+    .back-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 35;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 8px;
+      color: #ffffff;
+      background: var(--navy);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .back-top.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .back-top svg {
+      width: 22px;
+      height: 22px;
+      margin: auto;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .header.scrolled .nav {
+      background: rgba(15, 23, 42, 0.88);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .header.header-hidden {
+      transform: translateY(-100%);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+      will-change: auto;
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-32px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+      will-change: auto;
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(32px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+      will-change: auto;
+    }
+
+    .hero-content {
+      animation: heroIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes heroIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .card:hover,
+    .policy-card:hover,
+    .support-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card,
+    .policy-card,
+    .support-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .ops-panel {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .ops-panel:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .market-window {
+      transition: transform 0.35s ease;
+    }
+
+    .market:hover .market-window {
+      transform: scale(1.04);
+    }
+
+    .market:hover .market-label {
+      background: rgba(0,0,0,0.15);
+    }
+
+    .metric {
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.4s ease;
+    }
+
+    .tab-btn {
+      transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+
+    .tab-btn:hover:not(.active) {
+      transform: translateY(-1px);
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    .product-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(16, 42, 67, 0.12);
+    }
+
+    @media (max-width: 1040px) {
+      .nav {
+        overflow: visible;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      .links {
+        position: absolute;
+        top: 68px;
+        left: 8px;
+        right: 8px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 14px 18px 18px;
+        background: rgba(12, 20, 35, 0.94);
+        backdrop-filter: blur(18px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      }
+
+      .links.open {
+        display: flex;
+      }
+
+      .links a {
+        padding: 13px 14px;
+        border-radius: 12px;
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      .links a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+      }
+
+      .nav .btn {
+        display: none;
+      }
+
+      .section-head,
+      .intro-grid,
+      .cta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics,
+      .support-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .policy-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .product-body {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      html {
+        overflow-x: hidden;
+      }
+
+      .container {
+        width: min(100% - 20px, var(--max));
+      }
+
+      .social-sidebar {
+        display: none;
+      }
+
+      .header {
+        padding: 8px 10px;
+      }
+
+      .nav {
+        height: 54px;
+        padding: 0 8px 0 14px;
+      }
+
+      .brand {
+        min-width: auto;
+      }
+
+      .brand img {
+        height: 28px;
+      }
+
+      .hero {
+        aspect-ratio: auto;
+        min-height: 100svh;
+        min-height: 100vh;
+      }
+
+      .hero-content {
+        padding: 76px 0 32px;
+      }
+
+      h1 {
+        font-size: 26px;
+        margin: 16px 0 14px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .eyebrow {
+        font-size: 11px;
+        padding: 5px 8px;
+      }
+
+      .hero-actions {
+        flex-direction: row;
+        margin: 20px 0 28px;
+        gap: 10px;
+      }
+
+      .hero-actions .btn {
+        flex: 1;
+        min-height: 42px;
+        padding: 0 14px;
+        font-size: 14px;
+        justify-content: center;
+      }
+
+      .section {
+        padding: 52px 0;
+      }
+
+      .kicker {
+        font-size: 12px;
+      }
+
+      .lead {
+        font-size: 15px;
+      }
+
+      .metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .hero-wrapper {
+        padding-bottom: 14px;
+      }
+
+      .metric:nth-child(1) { transform: rotate(-1.5deg) translateY(3px); }
+      .metric:nth-child(2) { transform: rotate(1deg) translateY(-2px); }
+      .metric:nth-child(3) { transform: rotate(-0.8deg) translateY(2px); }
+      .metric:nth-child(4) { transform: rotate(1.5deg) translateY(-3px); }
+
+      .advantage-grid,
+      .policy-grid,
+      .product-grid,
+      .support-grid,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .advantage-grid {
+        margin-top: 28px;
+      }
+
+      .card {
+        padding: 16px;
+      }
+
+      .card h3 {
+        font-size: 15px;
+      }
+
+      .card p {
+        font-size: 12px;
+      }
+
+      .policy-card {
+        padding: 18px;
+      }
+
+      .ops-panel {
+        padding: 22px 18px;
+      }
+
+      .ops-head b {
+        font-size: 17px;
+      }
+
+      .ops-head span {
+        font-size: 13px;
+      }
+
+      .ops-step {
+        grid-template-columns: 36px 1fr;
+        gap: 12px;
+        padding-bottom: 22px;
+      }
+
+      .ops-num {
+        width: 36px;
+        height: 36px;
+        font-size: 15px;
+      }
+
+      .ops-step::before {
+        left: 17px;
+        top: 36px;
+      }
+
+      .ops-body b {
+        font-size: 15px;
+      }
+
+      .ops-body span {
+        font-size: 13px;
+      }
+
+      .ops-steps-horizontal {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .ops-step-h::after {
+        display: none;
+      }
+
+      .market-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 20px;
+        padding-top: 20px;
+      }
+
+      .market-label b {
+        font-size: 10px;
+      }
+
+      .market-label span {
+        font-size: 7px;
+      }
+
+      .flight-card {
+        padding: 16px 14px;
+      }
+
+      .flight-code {
+        font-size: 16px;
+      }
+
+      .flight-city {
+        font-size: 15px;
+      }
+
+      .flight-point {
+        min-width: 60px;
+      }
+
+      .flight-sub {
+        font-size: 10px;
+      }
+
+      .flight-tag {
+        font-size: 10px;
+        padding: 2px 8px;
+      }
+
+      .xkld-card {
+        padding: 20px 16px;
+      }
+
+      .check-list.xkld-list {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .combo-bento {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 200px;
+      }
+      .combo-bento .bento-card:nth-child(1) { grid-column: span 2; }
+      .combo-bento .bento-card:nth-child(2) { grid-column: span 1; }
+      .combo-bento .bento-card:nth-child(n+3) { grid-column: span 1; }
+      .combo-bento .bento-card:last-child:nth-child(odd) { grid-column: span 2; }
+      .bento-card .bento-name { font-size: 18px; }
+
+      .contact-item span {
+        font-size: 12px;
+        word-break: break-word;
+      }
+
+      .cta {
+        background-size: cover;
+      }
+
+      .cta-grid {
+        gap: 28px;
+      }
+
+      .form {
+        padding: 20px 16px;
+      }
+
+      .form-grid {
+        gap: 12px;
+      }
+
+      .footer-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+        font-size: 12px;
+      }
+
+      .floating-contact {
+        right: 12px;
+        bottom: 72px;
+        gap: 10px;
+      }
+
+      .fc-btn {
+        width: 44px;
+        height: 44px;
+      }
+
+      .back-top {
+        width: 40px;
+        height: 40px;
+        right: 14px;
+        bottom: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+
+    @media (max-width: 380px) {
+      h1 {
+        font-size: 22px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .flight-route {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .flight-line {
+        min-width: 80px;
+      }
+
+      .nav {
+        height: 50px;
+        padding: 0 6px 0 12px;
+      }
+
+      .brand img {
+        height: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar"></div>
+
+  <div class="social-sidebar">
+    <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>instagram</a>
+    <span class="dot"></span>
+    <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>twitter</a>
+    <span class="dot"></span>
+    <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>facebook</a>
+  </div>
+
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="SilverSky — Signature Journey">
+        <img src="Logo/PNG/Asset%2012@6x.png" alt="SilverSky — Signature Journey" width="2412" height="650" decoding="async">
+      </a>
+
+      <nav class="links" id="navLinks" aria-label="Điều hướng chính">
+        <a href="#gioi-thieu">Giới thiệu</a>
+        <a href="#chinh-sach">Chính sách</a>
+        <a href="#san-pham">Sản phẩm</a>
+        <a href="#tour">Tour</a>
+        <a href="#lien-he">Liên hệ</a>
+      </nav>
+
+      <a class="btn btn-primary" href="#lien-he">Nhận báo giá</a>
+      <button class="menu" id="menuToggle" type="button" aria-label="Mở menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="home">
+    <div class="hero-wrapper">
+    <section class="hero" aria-label="Đối tác vé máy bay, combo và du lịch cho đại lý">
+      <div class="hero-slides">
+        <div class="hero-slide" style="background-image:url('H%C3%A0%20N%E1%BB%99i.png')"></div>
+        <div class="hero-slide" style="background-image:url('%C4%90%C3%A0%20N%E1%BA%B5ng.png')"></div>
+        <div class="hero-slide" style="background-image:url('H%E1%BB%93%20Ch%C3%AD%20Minh.png')"></div>
+        <div class="hero-slide" style="background-image:url('Mi%E1%BB%81n%20T%C3%A2y.png')"></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">Đại lý & Công ty du lịch</div>
+          <h1>Đối tác vé máy bay, combo và du lịch trọn gói cho đại lý</h1>
+          <p>
+            BlueSky Travel và SilverSky đồng hành cùng đại lý, công ty du lịch và đối tác bán hàng trong việc tối ưu chi phí, tăng biên lợi nhuận và mở rộng sản phẩm du lịch.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#san-pham">Xem sản phẩm</a>
+            <a class="btn btn-secondary" href="#chinh-sach">Xem chính sách</a>
+          </div>
+        </div>
+        <div class="metrics" aria-label="Điểm đến nổi bật">
+          <div class="metric">
+            <div class="bp">
+              <div class="bp-photo" style="background-image:url('H%C3%A0%20N%E1%BB%99i.png')"></div>
+              <div class="bp-info">
+                <div class="bp-badge">Boarding Pass</div>
+                <div><div class="bp-dest-label">Destination:</div><div class="bp-city">HÀ NỘI</div><div class="bp-country">VIETNAM</div></div>
+                <div class="bp-bottom"><div class="bp-date">Date:<i>Have a nice trip!</i></div><div class="bp-barcode"><span style="height:100%"></span><span style="height:60%"></span><span style="height:100%"></span><span style="height:40%"></span><span style="height:80%"></span><span style="height:100%"></span><span style="height:50%"></span><span style="height:90%"></span><span style="height:70%"></span><span style="height:100%"></span><span style="height:45%"></span><span style="height:85%"></span></div></div>
+              </div>
+            </div>
+            <div class="metric-stat">
+              <span class="stat-number" data-target="25">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Năm kinh nghiệm</span>
+            </div>
+          </div>
+          <div class="metric">
+            <div class="bp">
+              <div class="bp-photo" style="background-image:url('%C4%90%C3%A0%20N%E1%BA%B5ng.png')"></div>
+              <div class="bp-info">
+                <div class="bp-badge">Boarding Pass</div>
+                <div><div class="bp-dest-label">Destination:</div><div class="bp-city">ĐÀ NẴNG</div><div class="bp-country">VIETNAM</div></div>
+                <div class="bp-bottom"><div class="bp-date">Date:<i>Have a nice trip!</i></div><div class="bp-barcode"><span style="height:90%"></span><span style="height:50%"></span><span style="height:100%"></span><span style="height:70%"></span><span style="height:40%"></span><span style="height:100%"></span><span style="height:60%"></span><span style="height:85%"></span><span style="height:100%"></span><span style="height:45%"></span><span style="height:75%"></span><span style="height:100%"></span></div></div>
+              </div>
+            </div>
+            <div class="metric-stat">
+              <span class="stat-number" data-target="10000">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Khách hàng phục vụ</span>
+            </div>
+          </div>
+          <div class="metric">
+            <div class="bp">
+              <div class="bp-photo" style="background-image:url('H%E1%BB%93%20Ch%C3%AD%20Minh.png')"></div>
+              <div class="bp-info">
+                <div class="bp-badge">Boarding Pass</div>
+                <div><div class="bp-dest-label">Destination:</div><div class="bp-city">HỒ CHÍ MINH</div><div class="bp-country">VIETNAM</div></div>
+                <div class="bp-bottom"><div class="bp-date">Date:<i>Have a nice trip!</i></div><div class="bp-barcode"><span style="height:100%"></span><span style="height:45%"></span><span style="height:80%"></span><span style="height:100%"></span><span style="height:60%"></span><span style="height:90%"></span><span style="height:50%"></span><span style="height:100%"></span><span style="height:70%"></span><span style="height:40%"></span><span style="height:100%"></span><span style="height:85%"></span></div></div>
+              </div>
+            </div>
+            <div class="metric-stat">
+              <span class="stat-number" data-target="500">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Đối tác đại lý</span>
+            </div>
+          </div>
+          <div class="metric">
+            <div class="bp">
+              <div class="bp-photo" style="background-image:url('Mi%E1%BB%81n%20T%C3%A2y.png')"></div>
+              <div class="bp-info">
+                <div class="bp-badge">Boarding Pass</div>
+                <div><div class="bp-dest-label">Destination:</div><div class="bp-city">MIỀN TÂY</div><div class="bp-country">VIETNAM</div></div>
+                <div class="bp-bottom"><div class="bp-date">Date:<i>Have a nice trip!</i></div><div class="bp-barcode"><span style="height:85%"></span><span style="height:100%"></span><span style="height:55%"></span><span style="height:70%"></span><span style="height:100%"></span><span style="height:40%"></span><span style="height:90%"></span><span style="height:100%"></span><span style="height:60%"></span><span style="height:80%"></span><span style="height:45%"></span><span style="height:100%"></span></div></div>
+              </div>
+            </div>
+            <div class="metric-stat">
+              <span class="stat-number" data-target="50">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Điểm đến trong nước</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <section class="section section-intro" id="gioi-thieu">
+      <div class="container intro-grid">
+        <div class="reveal-left">
+          <div class="kicker">Giới thiệu</div>
+          <h2>Blue Sky & Silver Sky – Đối tác vé máy bay, combo và du lịch trọn gói cho đại lý</h2>
+          <div class="intro-copy">
+            <p>
+              Blue Sky là đơn vị hoạt động trong lĩnh vực vé máy bay, du lịch và dịch vụ lữ hành từ năm 2002, với gần 25 năm kinh nghiệm trong khai thác vé nội địa, vé quốc tế, vé đoàn, khách doanh nghiệp và xử lý phát sinh hành trình.
+            </p>
+            <p>
+              Silver Sky được phát triển từ năm 2026 như thương hiệu mới trong hệ sinh thái, tập trung vào trải nghiệm du lịch chỉn chu hơn, cá nhân hóa hơn và phù hợp với nhu cầu combo, tour, MICE, luxury travel và chăm sóc khách hàng đặc quyền.
+            </p>
+            <p>
+              Với mạng lưới đối tác hàng không, khách sạn, resort, vận chuyển và dịch vụ du lịch trong nước – quốc tế, Blue Sky & Silver Sky đồng hành cùng đại lý và công ty du lịch trong việc cung cấp sản phẩm ổn định, báo giá nhanh, hỗ trợ linh hoạt và xử lý phát sinh trước – trong – sau chuyến đi.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="reveal-right intro-illustration">
+          <div class="ticket-visual">
+            <div class="ticket-header">
+              <div class="ticket-brand">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.4-.1.9.3 1.1L11 12l-2 3H6l-1 1 3 2 2 3 1-1v-3l3-2 3.7 7.3c.2.4.7.5 1.1.3l.5-.3c.4-.2.6-.6.5-1.1z"/></svg>
+                <span>SILVER SKY</span>
+              </div>
+              <div class="ticket-stripe"></div>
+            </div>
+
+            <div class="ticket-hero-img">
+              <div class="ticket-img-slide" style="background-image:url('%E1%BA%A3nh%20H%C3%A0%20N%C3%B4%E1%BB%8B%201.png')"></div>
+              <div class="ticket-img-slide" style="background-image:url('%E1%BA%A3nh%20%C4%90%C3%A0%20N%E1%BA%B5ng%201.png')"></div>
+              <div class="ticket-img-slide" style="background-image:url('%E1%BA%A3nh%20H%E1%BB%93%20Ch%C3%AD%20Minh%201.png')"></div>
+              <div class="ticket-img-slide" style="background-image:url('%E1%BA%A3nh%20Mi%E1%BB%81n%20T%C3%A2y%201.png')"></div>
+              <div class="ticket-overlay-text">
+                <span class="ticket-small">LET'S</span>
+                <span class="ticket-big">TRAVEL</span>
+              </div>
+            </div>
+
+            <div class="ticket-promo">
+              <span>COMBO ĐẠI LÝ</span>
+              <span class="ticket-arrow">→</span>
+              <span>GIÁ TỐT NHẤT</span>
+            </div>
+
+            <div class="ticket-tear"></div>
+
+            <div class="ticket-details">
+              <div class="ticket-col">
+                <small>ĐIỂM ĐẾN</small>
+                <b>Hà Nội</b>
+                <b>Đà Nẵng</b>
+                <b>Phú Quốc</b>
+                <b>Nha Trang</b>
+              </div>
+              <div class="ticket-col">
+                <small>DỊCH VỤ</small>
+                <b>Vé máy bay</b>
+                <b>Combo</b>
+                <b>Khách sạn</b>
+                <b>Tour trọn gói</b>
+              </div>
+            </div>
+
+            <div class="ticket-footer">
+              <span>CHOOSE YOUR DESTINATION</span>
+              <div class="ticket-barcode">
+                <svg viewBox="0 0 120 30" preserveAspectRatio="none"><rect x="0" y="0" width="2" height="30" fill="#1e293b"/><rect x="4" y="0" width="1" height="30" fill="#1e293b"/><rect x="7" y="0" width="3" height="30" fill="#1e293b"/><rect x="12" y="0" width="1" height="30" fill="#1e293b"/><rect x="15" y="0" width="2" height="30" fill="#1e293b"/><rect x="19" y="0" width="1" height="30" fill="#1e293b"/><rect x="22" y="0" width="3" height="30" fill="#1e293b"/><rect x="27" y="0" width="1" height="30" fill="#1e293b"/><rect x="30" y="0" width="2" height="30" fill="#1e293b"/><rect x="34" y="0" width="1" height="30" fill="#1e293b"/><rect x="37" y="0" width="3" height="30" fill="#1e293b"/><rect x="42" y="0" width="2" height="30" fill="#1e293b"/><rect x="46" y="0" width="1" height="30" fill="#1e293b"/><rect x="49" y="0" width="2" height="30" fill="#1e293b"/><rect x="53" y="0" width="1" height="30" fill="#1e293b"/><rect x="56" y="0" width="3" height="30" fill="#1e293b"/><rect x="61" y="0" width="1" height="30" fill="#1e293b"/><rect x="64" y="0" width="2" height="30" fill="#1e293b"/><rect x="68" y="0" width="1" height="30" fill="#1e293b"/><rect x="71" y="0" width="3" height="30" fill="#1e293b"/><rect x="76" y="0" width="2" height="30" fill="#1e293b"/><rect x="80" y="0" width="1" height="30" fill="#1e293b"/><rect x="83" y="0" width="2" height="30" fill="#1e293b"/><rect x="87" y="0" width="3" height="30" fill="#1e293b"/><rect x="92" y="0" width="1" height="30" fill="#1e293b"/><rect x="95" y="0" width="2" height="30" fill="#1e293b"/><rect x="99" y="0" width="1" height="30" fill="#1e293b"/><rect x="102" y="0" width="3" height="30" fill="#1e293b"/><rect x="107" y="0" width="2" height="30" fill="#1e293b"/><rect x="111" y="0" width="1" height="30" fill="#1e293b"/><rect x="114" y="0" width="2" height="30" fill="#1e293b"/><rect x="118" y="0" width="2" height="30" fill="#1e293b"/></svg>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="container reveal" style="margin-top:80px;">
+        <div class="intro-grid" style="align-items:stretch;">
+          <div>
+            <div class="ops-head">
+              <b>Quy trình hợp tác</b>
+              <span>BlueSky & SilverSky đồng hành cùng đại lý từ báo giá đến hoàn tất chuyến đi</span>
+            </div>
+            <div class="ops-timeline" style="margin-top:16px;">
+              <div class="ops-tl-step">
+                <div class="ops-tl-dot" style="background:var(--blue)">01</div>
+                <div class="ops-tl-content"><b>Tiếp nhận yêu cầu</b><span>Nhận thông tin hành trình, số khách, thời gian và ngân sách.</span></div>
+              </div>
+              <div class="ops-tl-step">
+                <div class="ops-tl-dot" style="background:var(--teal)">02</div>
+                <div class="ops-tl-content"><b>Báo giá & tư vấn</b><span>Cập nhật giá vé, combo, khách sạn theo thời gian thực.</span></div>
+              </div>
+              <div class="ops-tl-step">
+                <div class="ops-tl-dot" style="background:var(--green)">03</div>
+                <div class="ops-tl-content"><b>Xác nhận & xuất vé</b><span>Giữ chỗ, xuất vé, xác nhận khách sạn và dịch vụ.</span></div>
+              </div>
+              <div class="ops-tl-step">
+                <div class="ops-tl-dot" style="background:var(--gold)">04</div>
+                <div class="ops-tl-content"><b>Hỗ trợ hành trình</b><span>Hỗ trợ đổi/hoàn, phát sinh, check-in và chăm sóc sau chuyến đi.</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="laptop-mockup">
+            <img src="mockup%20laptop.png" alt="" class="laptop-frame" loading="lazy">
+            <div class="laptop-content">
+              <div class="demo-screen">
+                <div class="demo-topbar">
+                  <div class="demo-dot"></div>
+                  <div class="demo-dot"></div>
+                  <div class="demo-dot"></div>
+                  <span>silversky.vn — Hệ thống đặt vé</span>
+                </div>
+                <div class="demo-body">
+                  <div class="demo-slide">
+                    <div class="demo-label"><i>01</i> Tiếp nhận yêu cầu</div>
+                    <div class="demo-row">
+                      <div class="demo-field"><small>Hành trình</small><span>HAN → DAD</span></div>
+                      <div class="demo-field"><small>Ngày đi</small><span>15/07/2026</span></div>
+                    </div>
+                    <div class="demo-row">
+                      <div class="demo-field"><small>Số khách</small><span>2 Người lớn</span></div>
+                      <div class="demo-field"><small>Ngân sách</small><span>3.500.000đ</span></div>
+                    </div>
+                    <div class="demo-bar"><div class="demo-bar-fill"></div></div>
+                  </div>
+                  <div class="demo-slide">
+                    <div class="demo-label"><i>02</i> Báo giá & tư vấn</div>
+                    <div class="demo-card">
+                      <div class="demo-card-head"><b>VN 161 — Vietnam Airlines</b><em class="demo-tag-blue">1.450.000đ</em></div>
+                      <div class="demo-card-detail"><span>06:00 → 07:20</span><span>Bay thẳng</span></div>
+                    </div>
+                    <div class="demo-card">
+                      <div class="demo-card-head"><b>VJ 523 — Vietjet Air</b><em class="demo-tag-green">980.000đ</em></div>
+                      <div class="demo-card-detail"><span>08:30 → 09:50</span><span>Bay thẳng</span></div>
+                    </div>
+                    <div class="demo-bar"><div class="demo-bar-fill"></div></div>
+                  </div>
+                  <div class="demo-slide">
+                    <div class="demo-label"><i>03</i> Xác nhận & xuất vé</div>
+                    <div class="demo-card">
+                      <div class="demo-card-head"><b>Mã đặt chỗ: XKFT72</b><em class="demo-tag-green">Đã xuất vé</em></div>
+                      <div class="demo-card-detail"><span>VN 161 · HAN→DAD</span><span>15/07 · 06:00</span></div>
+                    </div>
+                    <div class="demo-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Vé điện tử đã gửi qua email</div>
+                    <div class="demo-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Khách sạn Novotel xác nhận</div>
+                    <div class="demo-bar"><div class="demo-bar-fill"></div></div>
+                  </div>
+                  <div class="demo-slide">
+                    <div class="demo-label"><i>04</i> Hỗ trợ hành trình</div>
+                    <div class="demo-msg">
+                      <div class="demo-avatar" style="background:var(--blue)">Đ</div>
+                      <div class="demo-bubble">Khách muốn đổi chuyến bay về sớm 1 ngày?</div>
+                    </div>
+                    <div class="demo-msg">
+                      <div class="demo-bubble right">Đã xác nhận đổi VN 164 ngày 19/07, phí đổi 350k ✓</div>
+                      <div class="demo-avatar" style="background:var(--gold)">S</div>
+                    </div>
+                    <div class="demo-bar"><div class="demo-bar-fill"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="chinh-sach">
+      <div class="container">
+        <div class="section-head reveal" style="display: block;">
+          <div class="kicker">Chính sách</div>
+          <h2>Chính sách vé máy bay & combo</h2>
+          <p class="lead" style="margin-top: 12px;">
+            Báo giá theo thời điểm thực tế, cập nhật theo tình trạng chỗ của hãng.
+          </p>
+        </div>
+
+        <div class="policy-grid reveal">
+          <article class="policy-card"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"></path></svg></div><h3>Báo giá thời gian thực</h3><p>Cập nhật giá vé theo tình trạng chỗ và hãng bay tại thời điểm đặt.</p></article>
+          <article class="policy-card"><div class="icon" style="background: var(--blue);"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4"></path><path d="M8 2v4"></path><path d="M3 10h18"></path></svg></div><h3>Giữ chỗ & xuất vé</h3><p>Hỗ trợ giữ chỗ, xuất vé, hoàn/đổi vé theo điều kiện từng hãng.</p></article>
+          <article class="policy-card"><div class="icon" style="background: var(--green);"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><h3>Vé đa dạng</h3><p>Vé khách lẻ, vé đoàn, vé công tác, vé du lịch và vé theo yêu cầu đặc biệt.</p></article>
+          <article class="policy-card"><div class="icon" style="background: var(--gold);"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><circle cx="7" cy="7" r="1"></circle></svg></div><h3>Tư vấn hành lý</h3><p>Tư vấn hành lý, chọn chỗ, điều kiện đổi tên, đổi ngày, hoàn vé.</p></article>
+          <article class="policy-card"><div class="icon" style="background: var(--red);"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div><h3>Check-in & hỗ trợ</h3><p>Hỗ trợ check-in online và xử lý phát sinh khi thay đổi lịch bay.</p></article>
+          <article class="policy-card"><div class="icon" style="background: var(--navy);"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path></svg></div><h3>Đầu mối nhanh</h3><p>Có đầu mối hỗ trợ nhanh cho đại lý khi cần xử lý booking gấp.</p></article>
+          <article class="policy-card"><div class="icon" style="background: var(--blue);"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"></path><path d="M3 3v6h6"></path></svg></div><h3>Combo linh hoạt</h3><p>Combo vé + khách sạn theo ngân sách, điểm đến và tiêu chuẩn lưu trú.</p></article>
+          <article class="policy-card"><div class="icon" style="background: var(--green);"><svg viewBox="0 0 24 24"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"></path></svg></div><h3>Hoa hồng & chiết khấu</h3><p>Chính sách hoa hồng/chiết khấu riêng của hãng và của Blue Sky – Silver Sky.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-blue" id="san-pham">
+      <div class="container">
+        <div class="section-head reveal" style="display: block;">
+          <div class="kicker">Sản phẩm</div>
+          <h2>Vé máy bay nội địa & quốc tế</h2>
+          <p class="lead" style="margin-top: 12px;">
+            Hỗ trợ đặt vé cho khách lẻ, khách đoàn, khách du lịch, khách công tác và nhóm doanh nghiệp.
+          </p>
+        </div>
+
+        <div class="product-grid reveal">
+          <article class="product-card">
+            <div class="flight-card">
+              <div class="flight-top"><span class="flight-code">Nội địa phổ biến</span><span class="flight-tag du-hoc">Hàng ngày</span></div>
+              <div class="flight-route">
+                <div class="flight-point"><div class="flight-city">HAN</div><div class="flight-sub">Hà Nội</div></div>
+                <div class="flight-line"><span class="flight-dot-left"></span><svg class="plane-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5 0 1 .4 1.2L9 11l-2 2-3-.5c-.4-.1-.7.1-.9.4l-.2.4c-.2.5 0 1 .4 1.2l3.5 1.5 1.5 3.5c.2.4.7.6 1.2.4l.4-.2c.3-.2.5-.5.4-.9L10 15l2-2 2.6 5.2c.2.4.7.6 1.2.4l.5-.3c.4-.2.6-.6.5-1.1z"/></svg><span class="flight-dot-right"></span><div class="flight-note">nonstop</div></div>
+                <div class="flight-point"><div class="flight-city">SGN</div><div class="flight-sub">TP. HCM</div></div>
+              </div>
+            </div>
+            <div class="flight-card" style="border-bottom: none; padding-top: 16px; padding-bottom: 20px;">
+              <div class="list-title" style="margin-bottom: 8px;">Đường bay nội địa chủ yếu</div>
+              <ul class="check-list xkld-list" style="font-size: 13px;">
+                <li>Hà Nội ⇄ TP. HCM / Đà Nẵng / Phú Quốc</li>
+                <li>Hà Nội ⇄ Nha Trang / Đà Lạt</li>
+                <li>TP. HCM ⇄ Đà Nẵng / Phú Quốc / Nha Trang / Đà Lạt</li>
+                <li>Đà Nẵng ⇄ Phú Quốc</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="flight-card">
+              <div class="flight-top"><span class="flight-code">Quốc tế phổ biến</span><span class="flight-tag du-hoc">Đa dạng</span></div>
+              <div class="flight-route">
+                <div class="flight-point"><div class="flight-city">VN</div><div class="flight-sub">Việt Nam</div></div>
+                <div class="flight-line"><span class="flight-dot-left"></span><svg class="plane-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5 0 1 .4 1.2L9 11l-2 2-3-.5c-.4-.1-.7.1-.9.4l-.2.4c-.2.5 0 1 .4 1.2l3.5 1.5 1.5 3.5c.2.4.7.6 1.2.4l.4-.2c.3-.2.5-.5.4-.9L10 15l2-2 2.6 5.2c.2.4.7.6 1.2.4l.5-.3c.4-.2.6-.6.5-1.1z"/></svg><span class="flight-dot-right"></span><div class="flight-note">nonstop / nối chuyến</div></div>
+                <div class="flight-point"><div class="flight-city">INT</div><div class="flight-sub">Quốc tế</div></div>
+              </div>
+            </div>
+            <div class="flight-card" style="border-bottom: none; padding-top: 16px; padding-bottom: 20px;">
+              <div class="list-title" style="margin-bottom: 8px;">Đường bay quốc tế chủ yếu</div>
+              <ul class="check-list xkld-list" style="font-size: 13px;">
+                <li><b>Nhật Bản:</b> HAN/SGN ⇄ Tokyo, Osaka, Fukuoka, Nagoya</li>
+                <li><b>Hàn Quốc:</b> HAN/SGN/DAD ⇄ Seoul, Busan</li>
+                <li><b>Đài Loan:</b> HAN/SGN ⇄ Đài Bắc</li>
+                <li><b>ĐNA:</b> VN ⇄ Bangkok, Singapore, KL, Bali, Manila</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="combo">
+      <div class="container">
+        <div class="section-head reveal" style="display: block;">
+          <div class="kicker">Sản phẩm</div>
+          <h2>Combo vé + khách sạn</h2>
+          <p class="lead" style="margin-top: 12px;">
+            Combo cho khách lẻ, gia đình, khách đoàn và nhóm du lịch. Thiết kế theo ngân sách và yêu cầu riêng.
+          </p>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Combo du lịch">
+          <button class="tab-btn active" type="button" data-tab="combo-nd">Combo nội địa</button>
+          <button class="tab-btn" type="button" data-tab="combo-qt">Combo quốc tế</button>
+        </div>
+
+        <div class="tab-panel active" id="combo-nd">
+          <div class="combo-bento reveal">
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1200&q=80" alt="Phú Quốc">
+              <div class="bento-overlay"></div>
+              <span class="bento-badge">3N2Đ / 4N3Đ</span>
+              <div class="bento-label">
+                <div class="bento-name">Phú Quốc</div>
+                <div class="bento-desc">Vé máy bay + resort/khách sạn + dịch vụ đặt thêm đa dạng</div>
+              </div>
+            </div>
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1573790387438-4da905039392?auto=format&fit=crop&w=800&q=80" alt="Nha Trang">
+              <div class="bento-overlay"></div>
+              <span class="bento-badge">3N2Đ / 4N3Đ</span>
+              <div class="bento-label">
+                <div class="bento-name">Nha Trang</div>
+                <div class="bento-desc">Vé máy bay + khách sạn trung tâm hoặc resort biển</div>
+              </div>
+            </div>
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=800&q=80" alt="Đà Nẵng">
+              <div class="bento-overlay"></div>
+              <span class="bento-badge">3N2Đ / 4N3Đ</span>
+              <div class="bento-label">
+                <div class="bento-name">Đà Nẵng – Hội An</div>
+                <div class="bento-desc">Vé máy bay + khách sạn + lịch trình đa dạng</div>
+              </div>
+            </div>
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1553851919-596510268b99?auto=format&fit=crop&w=800&q=80" alt="Combo tùy chỉnh">
+              <div class="bento-overlay"></div>
+              <div class="bento-label">
+                <div class="bento-name">Combo tùy chỉnh</div>
+                <div class="bento-desc">Thiết kế combo riêng theo yêu cầu của đại lý hoặc khách hàng cuối</div>
+              </div>
+            </div>
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=800&q=80" alt="Dịch vụ bổ sung">
+              <div class="bento-overlay"></div>
+              <div class="bento-label">
+                <div class="bento-name">Dịch vụ bổ sung</div>
+                <div class="bento-desc">Xe đưa đón, vé tham quan, bảo hiểm du lịch, sim/wifi</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="combo-qt">
+          <div class="combo-bento reveal">
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1200&q=80" alt="Nhật Bản">
+              <div class="bento-overlay"></div>
+              <div class="bento-label">
+                <div class="bento-name">Nhật Bản</div>
+                <div class="bento-desc">Vé máy bay + khách sạn Tokyo/Osaka + lịch trình tự túc hoặc tour</div>
+              </div>
+            </div>
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&w=800&q=80" alt="Hàn Quốc">
+              <div class="bento-overlay"></div>
+              <div class="bento-label">
+                <div class="bento-name">Hàn Quốc</div>
+                <div class="bento-desc">Vé máy bay + khách sạn Seoul/Busan + lịch trình tự do hoặc tour ghép</div>
+              </div>
+            </div>
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=800&q=80" alt="Thái Lan">
+              <div class="bento-overlay"></div>
+              <div class="bento-label">
+                <div class="bento-name">Thái Lan</div>
+                <div class="bento-desc">Bangkok, Pattaya, Chiang Mai theo yêu cầu</div>
+              </div>
+            </div>
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=800&q=80" alt="Singapore">
+              <div class="bento-overlay"></div>
+              <div class="bento-label">
+                <div class="bento-name">Singapore – Malaysia</div>
+                <div class="bento-desc">Combo linh hoạt theo ngân sách đại lý</div>
+              </div>
+            </div>
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1470004914212-05527e49370b?auto=format&fit=crop&w=800&q=80" alt="Đài Loan">
+              <div class="bento-overlay"></div>
+              <div class="bento-label">
+                <div class="bento-name">Đài Loan</div>
+                <div class="bento-desc">Đài Bắc, Cao Hùng + thiết kế combo riêng theo yêu cầu</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="reveal">
+          <h2 style="font-size:clamp(22px,2.5vw,28px); font-weight:900; margin-bottom:6px;">Khám phá Việt Nam</h2>
+          <p style="color:var(--muted); margin-bottom:24px;">Các điểm đến phổ biến nhất cho đại lý và du khách từ Việt Nam</p>
+        </div>
+        <div class="explore-wrap reveal">
+          <div class="explore-row">
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1553851919-596510268b99?auto=format&fit=crop&w=400&q=80" alt="Hà Nội"><h4>Hà Nội</h4><span>Văn hóa & ẩm thực</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=400&q=80" alt="TP. Hồ Chí Minh"><h4>TP. Hồ Chí Minh</h4><span>Đô thị & mua sắm</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=400&q=80" alt="Đà Nẵng"><h4>Đà Nẵng</h4><span>Biển & Cầu Vàng</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1693294603830-f44c9511d643?auto=format&fit=crop&w=400&q=80" alt="Phú Quốc"><h4>Phú Quốc</h4><span>Resort & biển đảo</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1573790387438-4da905039392?auto=format&fit=crop&w=400&q=80" alt="Nha Trang"><h4>Nha Trang</h4><span>Biển & nghỉ dưỡng</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=400&q=80" alt="Hội An"><h4>Hội An</h4><span>Phố cổ & đèn lồng</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1570366583862-f91883984fde?auto=format&fit=crop&w=400&q=80" alt="Sapa"><h4>Sapa</h4><span>Ruộng bậc thang</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=400&q=80" alt="Đà Lạt"><h4>Đà Lạt</h4><span>Cao nguyên & hoa</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1468413253725-0d5181091126?auto=format&fit=crop&w=400&q=80" alt="Hạ Long"><h4>Hạ Long</h4><span>Vịnh & du thuyền</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1531737212413-667205e1cda7?auto=format&fit=crop&w=400&q=80" alt="Huế"><h4>Huế</h4><span>Cố đô & di sản</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1609412058473-c199497c3c5d?auto=format&fit=crop&w=400&q=80" alt="Quy Nhơn"><h4>Quy Nhơn</h4><span>Biển hoang sơ</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1713845693881-b120cf5aacc8?auto=format&fit=crop&w=400&q=80" alt="Vũng Tàu"><h4>Vũng Tàu</h4><span>Biển gần Sài Gòn</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1557750255-c76072a7aad1?auto=format&fit=crop&w=400&q=80" alt="Ninh Bình"><h4>Ninh Bình</h4><span>Tràng An & Tam Cốc</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1689760661330-6275eef70706?auto=format&fit=crop&w=400&q=80" alt="Mũi Né"><h4>Mũi Né</h4><span>Đồi cát & resort</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1543411789-1a67a2ac05c6?auto=format&fit=crop&w=400&q=80" alt="Cần Thơ"><h4>Cần Thơ</h4><span>Chợ nổi & sông nước</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1716479852357-a71a74d81537?auto=format&fit=crop&w=400&q=80" alt="Phú Yên"><h4>Phú Yên</h4><span>Gành Đá Đĩa</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1500049242364-5f500807cdd7?auto=format&fit=crop&w=400&q=80" alt="Côn Đảo"><h4>Côn Đảo</h4><span>Biển đảo hoang sơ</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1670654534716-91f59fe06a26?auto=format&fit=crop&w=400&q=80" alt="Hà Giang"><h4>Hà Giang</h4><span>Đèo & cao nguyên đá</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1504457047772-27faf1c00561?auto=format&fit=crop&w=400&q=80" alt="Phong Nha"><h4>Phong Nha</h4><span>Hang động & di sản</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1595875421347-3da1b04ed7b8?auto=format&fit=crop&w=400&q=80" alt="Hải Phòng"><h4>Hải Phòng</h4><span>Cát Bà & đô thị biển</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Tam Đảo"><h4>Tam Đảo</h4><span>Nghỉ dưỡng núi</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?auto=format&fit=crop&w=400&q=80" alt="Sầm Sơn"><h4>Sầm Sơn</h4><span>Biển Thanh Hóa</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?auto=format&fit=crop&w=400&q=80" alt="Cửa Lò"><h4>Cửa Lò</h4><span>Biển Nghệ An</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1712432142102-660663b65fce?auto=format&fit=crop&w=400&q=80" alt="Buôn Ma Thuột"><h4>Buôn Ma Thuột</h4><span>Tây Nguyên & cà phê</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=400&q=80" alt="Mộc Châu"><h4>Mộc Châu</h4><span>Đồi chè & hoa mận</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?auto=format&fit=crop&w=400&q=80" alt="Mai Châu"><h4>Mai Châu</h4><span>Bản làng & homestay</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1523905330026-b8bd1f5f320e?auto=format&fit=crop&w=400&q=80" alt="Cao Bằng"><h4>Cao Bằng</h4><span>Thác Bản Giốc</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=400&q=80" alt="Bắc Kạn"><h4>Bắc Kạn</h4><span>Hồ Ba Bể</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=400&q=80" alt="Lạng Sơn"><h4>Lạng Sơn</h4><span>Biên giới & văn hóa</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=400&q=80" alt="Tây Ninh"><h4>Tây Ninh</h4><span>Núi Bà Đen</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1586016413664-864c0dd76f53?auto=format&fit=crop&w=400&q=80" alt="Châu Đốc"><h4>Châu Đốc</h4><span>Núi Sam & miếu Bà</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" alt="Long Hải"><h4>Long Hải</h4><span>Biển & tâm linh</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=400&q=80" alt="Pleiku"><h4>Pleiku</h4><span>Biển Hồ & Tây Nguyên</span></div>
+            <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=400&q=80" alt="Yên Bái"><h4>Yên Bái</h4><span>Mù Cang Chải</span></div>
+          </div>
+          <button class="explore-btn" onclick="this.previousElementSibling.scrollBy({left:400,behavior:'smooth'})">
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-intro" id="tour">
+      <div class="container">
+        <div class="section-head reveal" style="display: block;">
+          <div class="kicker">Tour du lịch</div>
+          <h2>Tour nội địa & quốc tế</h2>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Tour du lịch">
+          <button class="tab-btn active" type="button" data-tab="tour-nd">Tour nội địa</button>
+          <button class="tab-btn" type="button" data-tab="tour-qt">Tour quốc tế</button>
+        </div>
+
+        <div class="tab-panel active" id="tour-nd">
+          <div class="combo-bento reveal">
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1200&q=80" alt="Phú Quốc">
+              <div class="bento-overlay"></div>
+              <span class="bento-badge">4N3Đ</span>
+              <div class="bento-label">
+                <div class="bento-name">Phú Quốc</div>
+                <div class="bento-desc">Nghỉ dưỡng biển đảo, Sun World, Grand World, check-in Nam đảo/Bắc đảo</div>
+              </div>
+            </div>
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1573790387438-4da905039392?auto=format&fit=crop&w=800&q=80" alt="Nha Trang">
+              <div class="bento-overlay"></div>
+              <span class="bento-badge">4N3Đ</span>
+              <div class="bento-label">
+                <div class="bento-name">Nha Trang</div>
+                <div class="bento-desc">Biển đảo, city tour, Vinpearl, nghỉ dưỡng gia đình</div>
+              </div>
+            </div>
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=800&q=80" alt="Đà Nẵng">
+              <div class="bento-overlay"></div>
+              <span class="bento-badge">4N3Đ</span>
+              <div class="bento-label">
+                <div class="bento-name">Đà Nẵng – Hội An – Bà Nà</div>
+                <div class="bento-desc">Phù hợp đoàn công ty, gia đình, khách du lịch lần đầu</div>
+              </div>
+            </div>
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1553851919-596510268b99?auto=format&fit=crop&w=800&q=80" alt="Hà Nội">
+              <div class="bento-overlay"></div>
+              <span class="bento-badge">4N3Đ</span>
+              <div class="bento-label">
+                <div class="bento-name">Hà Nội – Hạ Long – Ninh Bình</div>
+                <div class="bento-desc">Phù hợp khách đoàn, khách inbound, đối tác doanh nghiệp</div>
+              </div>
+            </div>
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1570366583862-f91883984fde?auto=format&fit=crop&w=800&q=80" alt="Sapa">
+              <div class="bento-overlay"></div>
+              <span class="bento-badge">3N2Đ</span>
+              <div class="bento-label">
+                <div class="bento-name">Sapa</div>
+                <div class="bento-desc">Nghỉ dưỡng, săn mây, Fansipan, bản làng</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="tour-qt">
+          <div class="combo-bento reveal">
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&w=1200&q=80" alt="Hàn Quốc">
+              <div class="bento-overlay"></div>
+              <span class="bento-badge">5N4Đ</span>
+              <div class="bento-label">
+                <div class="bento-name">Hàn Quốc</div>
+                <div class="bento-desc">Seoul – Nami – Everland – shopping – trải nghiệm văn hóa</div>
+              </div>
+            </div>
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80" alt="Nhật Bản">
+              <div class="bento-overlay"></div>
+              <span class="bento-badge">5N4Đ / 6N5Đ</span>
+              <div class="bento-label">
+                <div class="bento-name">Nhật Bản</div>
+                <div class="bento-desc">Tokyo – Núi Phú Sĩ – Osaka – Kyoto – Kobe tùy lịch trình</div>
+              </div>
+            </div>
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=800&q=80" alt="Thái Lan">
+              <div class="bento-overlay"></div>
+              <span class="bento-badge">5N4Đ</span>
+              <div class="bento-label">
+                <div class="bento-name">Thái Lan</div>
+                <div class="bento-desc">Bangkok – Pattaya, phù hợp đoàn khách phổ thông</div>
+              </div>
+            </div>
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=800&q=80" alt="Singapore">
+              <div class="bento-overlay"></div>
+              <span class="bento-badge">4N3Đ</span>
+              <div class="bento-label">
+                <div class="bento-name">Singapore – Malaysia</div>
+                <div class="bento-desc">Tour ghép hoặc riêng, linh hoạt theo ngân sách đại lý</div>
+              </div>
+            </div>
+            <div class="bento-card">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1470004914212-05527e49370b?auto=format&fit=crop&w=800&q=80" alt="Đài Loan">
+              <div class="bento-overlay"></div>
+              <span class="bento-badge">5N4Đ</span>
+              <div class="bento-label">
+                <div class="bento-name">Đài Loan</div>
+                <div class="bento-desc">Đài Bắc – Cao Hùng – Đài Trung, tour ghép hoặc riêng</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta" id="lien-he">
+      <div class="container cta-grid">
+        <div class="reveal-left">
+          <div class="kicker" style="color: var(--gold);">Liên hệ</div>
+          <h2>Liên hệ nhận báo giá cho đại lý</h2>
+          <p>
+            Gửi thông tin hành trình, số lượng khách, thời gian và ngân sách. BlueSky Travel và SilverSky sẽ tư vấn sản phẩm và chính sách hợp tác riêng cho đại lý và công ty du lịch.
+          </p>
+          <div class="contact-list">
+            <div class="contact-item"><span class="contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 11.19 19 19.5 19.5 0 0 1 5 12.81 19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.62 2.6a2 2 0 0 1-.45 2.11L8 9.66a16 16 0 0 0 6.34 6.34l1.23-1.23a2 2 0 0 1 2.11-.45c.83.29 1.7.5 2.6.62A2 2 0 0 1 22 16.92z"></path></svg></span><div><b>Hotline</b><span>0934 654 656</span></div></div>
+            <div class="contact-item"><span class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"></path><path d="m22 6-10 7L2 6"></path></svg></span><div><b>Email</b><span>sales@silversky.vn / phongve@blueskyvietnam.com</span></div></div>
+            <div class="contact-item"><span class="contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15 15 0 0 1 0 20"></path><path d="M12 2a15 15 0 0 0 0 20"></path></svg></span><div><b>Website</b><span>blueskyvietnam.com / silversky.vn</span></div></div>
+            <div class="contact-item"><span class="contact-icon"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path></svg></span><div><b>Group Zalo</b><span><a href="https://zalo.me/g/57lcapypguczxiaeff6o" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Tham gia Group Zalo</a></span></div></div>
+            <div class="contact-item"><span class="contact-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span><div><b>Trụ sở</b><span>105 Nghi Tàm, phường Tây Hồ, Hà Nội</span></div></div>
+          </div>
+        </div>
+
+        <form class="form reveal-right" id="contactForm">
+          <div class="form-grid">
+            <div class="field">
+              <label for="company">Tên công ty</label>
+              <input id="company" name="company" type="text" placeholder="Nhập tên đại lý / công ty du lịch">
+            </div>
+            <div class="field">
+              <label for="contact">Người liên hệ</label>
+              <input id="contact" name="contact" type="text" placeholder="Nhập họ tên">
+            </div>
+            <div class="field">
+              <label for="phone">Số điện thoại</label>
+              <input id="phone" name="phone" type="tel" placeholder="Nhập số điện thoại">
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="Nhập email">
+            </div>
+            <div class="field">
+              <label for="market">Nhu cầu</label>
+              <select id="market" name="market">
+                <option>Vé máy bay</option>
+                <option>Combo vé + khách sạn</option>
+                <option>Tour nội địa</option>
+                <option>Tour quốc tế</option>
+                <option>MICE / Đoàn doanh nghiệp</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="volume">Quy mô</label>
+              <input id="volume" name="volume" type="text" placeholder="Ví dụ: 20 khách">
+            </div>
+            <div class="field full">
+              <label for="message">Thông tin cần báo giá</label>
+              <textarea id="message" name="message" placeholder="Ví dụ: Đoàn 20 khách Hà Nội - Phú Quốc, 4N3Đ, cần vé + resort 4 sao, tháng 8"></textarea>
+            </div>
+            <div class="field full">
+              <button class="btn btn-primary" type="submit" style="width:100%">Gửi yêu cầu báo giá</button>
+              <p class="form-note" id="formNote">Biểu mẫu demo trên HTML thuần. Có thể nối với email, CRM hoặc Google Sheet ở bước sau.</p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <div>© 2026 Evotech. All rights reserved.</div>
+      <div>Đại lý du lịch | Vé máy bay | Combo | Tour | 105 Nghi Tàm, Tây Hồ, Hà Nội</div>
+    </div>
+  </footer>
+
+  <!-- Floating Contact Icons -->
+  <div class="floating-contact" aria-label="Liên hệ nhanh">
+    <a class="fc-btn fc-phone" href="tel:0934654656" aria-label="Gọi điện">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    </a>
+    <a class="fc-btn fc-zalo" href="https://zalo.me/g/57lcapypguczxiaeff6o" target="_blank" rel="noopener" aria-label="Chat Zalo">
+      <span class="fc-zalo-text">Zalo</span>
+    </a>
+    <a class="fc-btn fc-email" href="mailto:sales@silversky.vn" aria-label="Gửi Email">
+      <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg>
+    </a>
+    <a class="fc-btn fc-web" href="https://blueskyvietnam.com" target="_blank" rel="noopener" aria-label="Website">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+    </a>
+  </div>
+
+  <button class="back-top" id="backTop" type="button" aria-label="Cuộn lên đầu trang">
+    <svg viewBox="0 0 24 24"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg>
+  </button>
+
+  <script>
+    const navLinks = document.getElementById("navLinks");
+    const menuToggle = document.getElementById("menuToggle");
+    const backTop = document.getElementById("backTop");
+    const contactForm = document.getElementById("contactForm");
+    const formNote = document.getElementById("formNote");
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const tabPanels = document.querySelectorAll(".tab-panel");
+    const header = document.querySelector(".header");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = button.dataset.tab;
+
+        tabButtons.forEach((item) => item.classList.remove("active"));
+        tabPanels.forEach((panel) => panel.classList.remove("active"));
+
+        button.classList.add("active");
+        document.getElementById(target).classList.add("active");
+      });
+    });
+
+    let lastScrollY = window.scrollY;
+    window.addEventListener("scroll", () => {
+      const currentY = window.scrollY;
+      backTop.classList.toggle("show", currentY > 520);
+      header.classList.toggle("scrolled", currentY > 80);
+      if (currentY > 80) {
+        header.classList.toggle("header-hidden", currentY > lastScrollY);
+      } else {
+        header.classList.remove("header-hidden");
+      }
+      lastScrollY = currentY;
+    }, { passive: true });
+
+    backTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      formNote.textContent = "Đã ghi nhận yêu cầu demo. Ở bước triển khai thật, form này sẽ được nối với kênh nhận lead đối tác Du học & XKLĐ của bạn.";
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal, .reveal-left, .reveal-right").forEach((el) => {
+      revealObserver.observe(el);
+    });
+
+    function animateCounter(el, target, duration) {
+      const start = 0;
+      const startTime = performance.now();
+      const format = (n) => n >= 1000 ? n.toLocaleString('vi-VN') : n;
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(start + (target - start) * eased);
+        el.textContent = format(current);
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target, 10);
+          animateCounter(el, target, 2000);
+          statObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll(".stat-number").forEach((el) => {
+      statObserver.observe(el);
+    });
+  </script>
+</body>
+</html>

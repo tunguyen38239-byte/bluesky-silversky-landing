@@ -1,0 +1,62 @@
+Package Report
+
+-----------------------------------------------------------------------------
+Document:
+Name: SilverSky_Logo&Guide.ai
+Color Mode: RGB color
+Color Profile: sRGB IEC61966-2.1
+Ruler Units: pixels
+Artboard Dimensions: 1600 px x 5437,9302 px
+Show Images in Outline Mode: OFF
+Highlight Substituted Fonts: OFF
+Highlight Substituted Glyphs: OFF
+Preserve Text Editability
+Simulate Colored Paper: OFF
+
+-----------------------------------------------------------------------------
+Spot Color Objects:
+
+-----------------------------------------------------------------------------
+Missing Fonts:NONE
+
+-----------------------------------------------------------------------------
+Protected Fonts that were not packaged:NONE
+
+-----------------------------------------------------------------------------
+Fonts:
+SFU Helvetica (TrueType)
+Sofia Pro (OTF)
+Inter Regular (TrueType)
+Inter Bold (TrueType)
+Inter Tight Regular (TrueType)
+Inter Tight Medium (TrueType)
+Inter Tight Bold (TrueType)
+Lora SemiBold (TrueType)
+
+-----------------------------------------------------------------------------
+Embedded Fonts:
+NONE
+
+-----------------------------------------------------------------------------
+Missing Links:
+NONE
+
+-----------------------------------------------------------------------------
+Linked Images:
+
+/Users/MAC/Desktop/Screenshot 2026-02-05 at 11.34.20
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 10244K, 1868 by 1404 pixels
+Dimensions: 1133,28 by 851,78 points 
+Resolution: 118,679 by 118,679 pixels per inch
+
+
+/Users/MAC/Documents/DOT Company/DU AN/Silver Sky/Export/Round 2/SilverSky_Ung dung logo_R2-03.png
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 2705K, 1064 by 651 pixels
+Dimensions: 707,04 by 443,28 points 
+Resolution: 108,35 by 105,739 pixels per inch
