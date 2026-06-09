@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BlueSky Travel & SilverSky | Vé máy bay, Combo & Du lịch cho Đại lý</title>
   <meta name="description" content="Đối tác vé máy bay, combo vé + khách sạn và tour du lịch trọn gói cho đại lý và công ty du lịch.">
-  <link rel="preload" as="image" href="banner%20Blue%20%26%20Sky.png">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' https://images.unsplash.com data:; font-src 'self'; object-src 'none'; base-uri 'self'">
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
+
   <style>
     :root {
       --navy: #102a43;
@@ -40,6 +44,7 @@
       font-family: Arial, Helvetica, sans-serif;
       background: var(--paper);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a {
@@ -186,15 +191,38 @@
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.08);
       cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
     }
 
     .menu span {
       display: block;
       width: 18px;
       height: 2px;
-      margin: 4px auto;
       border-radius: 4px;
       background: #ffffff;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .menu span:nth-child(1) { top: 12px; }
+    .menu span:nth-child(2) { top: 19px; }
+    .menu span:nth-child(3) { top: 26px; }
+
+    .menu.active span:nth-child(1) {
+      top: 19px;
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .menu.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu.active span:nth-child(3) {
+      top: 19px;
+      transform: translateX(-50%) rotate(-45deg);
     }
 
     .btn {
@@ -274,6 +302,7 @@
     .hero-slide {
       position: absolute;
       inset: 0;
+      will-change: opacity;
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -679,6 +708,16 @@
 
     .product-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .flight-card-image-center {
+      text-align: center;
+      padding: 8px 20px 4px;
+    }
+    .flight-card-image-center img {
+      width: 80%;
+      max-width: 360px;
+      border-radius: 10px;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.1);
     }
 
     .support-grid {
@@ -1185,6 +1224,9 @@
     @media (min-width: 1041px) {
       .intro-grid .laptop-mockup .demo-body {
         flex: 1;
+      }
+      .flight-card-image-center img {
+        width: 70%;
       }
     }
 
@@ -2134,39 +2176,33 @@
       opacity: 0;
       transform: translateY(32px);
       transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
     }
 
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
-      will-change: auto;
     }
 
     .reveal-left {
       opacity: 0;
       transform: translateX(-32px);
       transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
     }
 
     .reveal-left.visible {
       opacity: 1;
       transform: translateX(0);
-      will-change: auto;
     }
 
     .reveal-right {
       opacity: 0;
       transform: translateX(32px);
       transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
     }
 
     .reveal-right.visible {
       opacity: 1;
       transform: translateX(0);
-      will-change: auto;
     }
 
     .hero-content {
@@ -2237,6 +2273,10 @@
     }
 
     @media (max-width: 1040px) {
+      .social-sidebar {
+        display: none;
+      }
+
       .nav {
         overflow: visible;
       }
@@ -2247,31 +2287,42 @@
 
       .links {
         position: absolute;
-        top: 68px;
-        left: 8px;
-        right: 8px;
-        display: none;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
         flex-direction: column;
         align-items: stretch;
-        padding: 14px 18px 18px;
-        background: rgba(12, 20, 35, 0.94);
-        backdrop-filter: blur(18px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 20px;
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-      }
-
-      .links.open {
+        padding: 8px 10px 12px;
+        background: rgba(10, 18, 32, 0.97);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 18px;
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        transform: translateY(-8px);
+        pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s ease;
         display: flex;
       }
 
-      .links a {
-        padding: 13px 14px;
-        border-radius: 12px;
-        color: rgba(255, 255, 255, 0.85);
+      .links.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
       }
 
-      .links a:hover {
+      .links a {
+        padding: 14px 16px;
+        border-radius: 12px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+      }
+
+      .links a:hover,
+      .links a:active {
         background: rgba(255, 255, 255, 0.1);
         color: #ffffff;
       }
@@ -2298,21 +2349,31 @@
       .product-body {
         grid-template-columns: 1fr;
       }
+
+      .intro-illustration {
+        position: relative;
+        top: auto;
+        transform: none;
+        transform-origin: center center;
+      }
+
+      .laptop-mockup {
+        max-width: 520px;
+        margin: 0 auto;
+      }
+
     }
 
     @media (max-width: 720px) {
-      html {
-        overflow-x: hidden;
-      }
-
       .container {
-        width: min(100% - 20px, var(--max));
+        width: min(100% - 24px, var(--max));
       }
 
       .social-sidebar {
         display: none;
       }
 
+      /* --- HEADER / NAV --- */
       .header {
         padding: 8px 10px;
       }
@@ -2330,80 +2391,253 @@
         height: 28px;
       }
 
+      /* --- HERO --- */
       .hero {
         aspect-ratio: auto;
-        min-height: 100svh;
-        min-height: 100vh;
+        min-height: auto;
+        padding-bottom: 20px;
+      }
+
+      .hero-overlay {
+        background: linear-gradient(
+          180deg,
+          rgba(9, 31, 52, 0.65) 0%,
+          rgba(9, 31, 52, 0.5) 35%,
+          rgba(9, 31, 52, 0.4) 60%,
+          rgba(9, 31, 52, 0.7) 100%
+        );
       }
 
       .hero-content {
-        padding: 76px 0 32px;
+        padding: 86px 0 20px;
       }
 
       h1 {
         font-size: 26px;
-        margin: 16px 0 14px;
+        margin: 14px 0 12px;
       }
 
       .hero p {
         font-size: 15px;
+        line-height: 1.55;
       }
 
       .eyebrow {
         font-size: 11px;
-        padding: 5px 8px;
+        padding: 5px 10px;
       }
 
       .hero-actions {
         flex-direction: row;
-        margin: 20px 0 28px;
+        margin: 18px 0 20px;
         gap: 10px;
       }
 
       .hero-actions .btn {
         flex: 1;
-        min-height: 42px;
+        min-height: 46px;
         padding: 0 14px;
         font-size: 14px;
         justify-content: center;
+        border-radius: 10px;
       }
 
-      .section {
-        padding: 52px 0;
-      }
-
-      .kicker {
-        font-size: 12px;
-      }
-
-      .lead {
-        font-size: 15px;
-      }
-
+      /* --- METRICS / BOARDING PASS --- */
       .metrics {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
+        gap: 10px;
       }
 
       .hero-wrapper {
-        padding-bottom: 14px;
+        padding-bottom: 12px;
       }
 
-      .metric:nth-child(1) { transform: rotate(-1.5deg) translateY(3px); }
-      .metric:nth-child(2) { transform: rotate(1deg) translateY(-2px); }
-      .metric:nth-child(3) { transform: rotate(-0.8deg) translateY(2px); }
-      .metric:nth-child(4) { transform: rotate(1.5deg) translateY(-3px); }
+      .metric {
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+      }
 
+      .metric:hover {
+        transform: none;
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+      }
+
+      .metric:nth-child(1) { transform: rotate(-1deg) translateY(2px); }
+      .metric:nth-child(2) { transform: rotate(0.8deg) translateY(-1px); }
+      .metric:nth-child(3) { transform: rotate(-0.5deg) translateY(1px); }
+      .metric:nth-child(4) { transform: rotate(1deg) translateY(-2px); }
+
+      .bp {
+        grid-template-columns: 36% 1fr;
+        aspect-ratio: 2.2 / 1;
+        border-radius: 10px;
+        -webkit-mask-image: radial-gradient(circle 4px at right, transparent 3.5px, black 4px);
+        -webkit-mask-size: 100% 12px;
+        mask-image: radial-gradient(circle 4px at right, transparent 3.5px, black 4px);
+        mask-size: 100% 12px;
+      }
+
+      .bp-badge {
+        font-size: 6px;
+        padding: 2px 6px;
+        border-radius: 3px;
+      }
+
+      .bp-dest-label {
+        font-size: 6px;
+      }
+
+      .bp-city {
+        font-size: clamp(11px, 3vw, 15px);
+      }
+
+      .bp-country {
+        font-size: clamp(8px, 2vw, 11px);
+      }
+
+      .bp-date {
+        font-size: 5.5px;
+      }
+
+      .bp-date i {
+        font-size: 7px;
+      }
+
+      .bp-barcode {
+        height: 14px;
+      }
+
+      .bp-barcode span {
+        width: 1px;
+      }
+
+      .bp-photo {
+        border-radius: 6px;
+        margin: 3px;
+      }
+
+      .bp-info {
+        padding: 5px 8px 5px 4px;
+      }
+
+      .stat-number {
+        font-size: clamp(22px, 5.5vw, 30px);
+      }
+
+      .stat-suffix {
+        font-size: clamp(18px, 4.5vw, 24px);
+      }
+
+      .stat-label {
+        font-size: 10px;
+        margin-top: 3px;
+      }
+
+      .metric-stat {
+        margin-top: 6px;
+      }
+
+      /* --- SECTIONS GENERAL --- */
+      .section {
+        padding: 48px 0;
+      }
+
+      .kicker {
+        font-size: 11px;
+      }
+
+      h2 {
+        font-size: clamp(20px, 5vw, 26px);
+      }
+
+      .lead {
+        font-size: 14px;
+      }
+
+      /* --- INTRO --- */
+      .section-intro {
+        padding-top: 36px;
+      }
+
+      .intro-grid {
+        gap: 24px;
+      }
+
+      .intro-grid h2 {
+        font-size: clamp(20px, 5vw, 26px);
+      }
+
+      .intro-copy {
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .intro-copy p {
+        margin-bottom: 12px;
+      }
+
+      .intro-illustration {
+        position: relative;
+        top: auto;
+        transform: none;
+      }
+
+      .ticket-visual {
+        border-radius: 14px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      }
+
+      .ticket-big {
+        font-size: clamp(24px, 8vw, 36px);
+      }
+
+      .ticket-promo {
+        font-size: 12px;
+        gap: 10px;
+        padding: 6px 14px;
+      }
+
+      .ticket-details {
+        padding: 8px 16px;
+        gap: 8px;
+      }
+
+      .ticket-col small {
+        font-size: 9px;
+        margin-bottom: 4px;
+      }
+
+      .ticket-col b {
+        font-size: 11px;
+      }
+
+      .ticket-footer {
+        padding: 6px 16px 10px;
+      }
+
+      .ticket-barcode {
+        height: 20px;
+      }
+
+      .laptop-mockup {
+        max-width: 100%;
+      }
+
+      /* Quy trình spacing */
+      .intro-grid + .container.reveal,
+      .container .intro-grid:last-child {
+        margin-top: 48px !important;
+      }
+
+      /* --- ADVANTAGE CARDS --- */
       .advantage-grid,
-      .policy-grid,
-      .product-grid,
       .support-grid,
       .form-grid {
         grid-template-columns: 1fr;
       }
 
       .advantage-grid {
-        margin-top: 28px;
+        margin-top: 24px;
+        gap: 12px;
       }
 
       .card {
@@ -2415,13 +2649,51 @@
       }
 
       .card p {
-        font-size: 12px;
+        font-size: 13px;
+      }
+
+      .card:hover,
+      .policy-card:hover,
+      .support-card:hover,
+      .product-card:hover,
+      .ops-panel:hover {
+        transform: none;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04);
+      }
+
+      /* --- POLICY --- */
+      .policy-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
       }
 
       .policy-card {
-        padding: 18px;
+        padding: 14px;
+        border-radius: 16px;
       }
 
+      .policy-card h3 {
+        font-size: 13px;
+      }
+
+      .policy-card p {
+        font-size: 11px;
+        line-height: 1.45;
+      }
+
+      .policy-card .icon {
+        width: 30px;
+        height: 30px;
+        margin-bottom: 8px;
+        border-radius: 7px;
+      }
+
+      .policy-card .icon svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      /* --- OPS / TIMELINE --- */
       .ops-panel {
         padding: 22px 18px;
       }
@@ -2468,6 +2740,31 @@
         display: none;
       }
 
+      .ops-tl-dot {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        font-size: 11px;
+      }
+
+      .ops-tl-step::before {
+        left: 15px;
+        top: 34px;
+      }
+
+      .ops-tl-step {
+        padding-bottom: 18px;
+      }
+
+      .ops-tl-content b {
+        font-size: 14px;
+      }
+
+      .ops-tl-content span {
+        font-size: 12px;
+      }
+
+      /* --- MARKET --- */
       .market-strip {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 8px;
@@ -2483,6 +2780,44 @@
         font-size: 7px;
       }
 
+      /* --- TABS --- */
+      .tabs {
+        gap: 6px;
+        margin-bottom: 18px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 2px;
+      }
+
+      .tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .tab-btn {
+        min-height: 38px;
+        padding: 0 14px;
+        font-size: 13px;
+        white-space: nowrap;
+        flex-shrink: 0;
+        border-radius: 8px;
+      }
+
+      /* --- PRODUCT / FLIGHT --- */
+      .product-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .flight-card-image-center img {
+        width: 90%;
+        max-width: 300px;
+      }
+
+      .product-card {
+        border-radius: 14px;
+      }
+
       .flight-card {
         padding: 16px 14px;
       }
@@ -2496,7 +2831,7 @@
       }
 
       .flight-point {
-        min-width: 60px;
+        min-width: 56px;
       }
 
       .flight-sub {
@@ -2514,63 +2849,237 @@
 
       .check-list.xkld-list {
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 10px;
       }
 
+      .check-list li {
+        font-size: 13px;
+      }
+
+      /* --- COMBO BENTO --- */
       .combo-bento {
         grid-template-columns: 1fr 1fr;
-        grid-auto-rows: 200px;
+        grid-auto-rows: 180px;
+        gap: 10px;
       }
-      .combo-bento .bento-card:nth-child(1) { grid-column: span 2; }
+      .combo-bento .bento-card:nth-child(1) { grid-column: span 2; grid-row: span 1; }
       .combo-bento .bento-card:nth-child(2) { grid-column: span 1; }
       .combo-bento .bento-card:nth-child(n+3) { grid-column: span 1; }
       .combo-bento .bento-card:last-child:nth-child(odd) { grid-column: span 2; }
-      .bento-card .bento-name { font-size: 18px; }
+
+      .bento-card {
+        border-radius: 10px;
+      }
+
+      .bento-card .bento-label {
+        padding: 12px;
+      }
+      .bento-card .bento-name {
+        font-size: 15px;
+      }
+      .bento-card .bento-desc {
+        font-size: 11px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .bento-card .bento-badge {
+        top: 8px;
+        right: 8px;
+        font-size: 10px;
+        padding: 3px 8px;
+        border-radius: 14px;
+      }
+
+      /* --- EXPLORE --- */
+      .explore-card {
+        flex: 0 0 140px;
+      }
+      .explore-card img {
+        width: 140px;
+        height: 140px;
+        border-radius: 10px;
+      }
+      .explore-card h4 {
+        font-size: 13px;
+        margin-top: 8px;
+      }
+      .explore-card span {
+        font-size: 11px;
+      }
+
+      .explore-btn {
+        top: 60px;
+        width: 36px;
+        height: 36px;
+        right: -4px;
+      }
+
+      /* --- CTA / CONTACT --- */
+      .cta {
+        background-size: cover;
+        background-position: center;
+      }
+
+      .cta h2 {
+        font-size: clamp(20px, 5vw, 26px);
+      }
+
+      .cta p {
+        font-size: 15px;
+      }
+
+      .cta-grid {
+        gap: 24px;
+      }
+
+      .contact-list {
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .contact-item {
+        padding: 12px;
+        border-radius: 10px;
+      }
+
+      .contact-item b {
+        font-size: 14px;
+      }
 
       .contact-item span {
         font-size: 12px;
         word-break: break-word;
       }
 
-      .cta {
-        background-size: cover;
+      .contact-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
       }
 
-      .cta-grid {
-        gap: 28px;
+      .contact-icon svg {
+        width: 18px;
+        height: 18px;
       }
 
+      /* --- FORM --- */
       .form {
         padding: 20px 16px;
+        margin-top: 20px;
+        border-radius: 12px;
       }
 
       .form-grid {
+        grid-template-columns: 1fr;
         gap: 12px;
+      }
+
+      input,
+      select,
+      textarea {
+        min-height: 48px;
+        font-size: 16px;
+        border-radius: 10px;
+      }
+
+      textarea {
+        min-height: 100px;
+      }
+
+      .form .btn {
+        min-height: 50px;
+        font-size: 16px;
+        border-radius: 10px;
+      }
+
+      label {
+        font-size: 13px;
+      }
+
+      .form-note {
+        font-size: 12px;
+      }
+
+      /* --- FOOTER --- */
+      .footer {
+        padding: 20px 16px;
+        padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px));
       }
 
       .footer-row {
         flex-direction: column;
         text-align: center;
-        gap: 8px;
-        font-size: 12px;
+        gap: 6px;
+        font-size: 11px;
       }
 
+      /* --- FLOATING CONTACT --- */
       .floating-contact {
-        right: 12px;
-        bottom: 72px;
-        gap: 10px;
+        position: fixed;
+        right: auto;
+        left: 0;
+        bottom: 0;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        gap: 0;
+        padding: 6px 8px;
+        padding-bottom: calc(6px + env(safe-area-inset-bottom, 0px));
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.06);
       }
 
       .fc-btn {
-        width: 44px;
-        height: 44px;
-      }
-
-      .back-top {
         width: 40px;
         height: 40px;
-        right: 14px;
-        bottom: 14px;
+        box-shadow: none;
+        border-radius: 10px;
+        flex: 1;
+        max-width: 72px;
+      }
+
+      .fc-btn svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .fc-zalo-text {
+        font-size: 11px;
+      }
+
+      /* --- BACK TOP --- */
+      .back-top {
+        width: 36px;
+        height: 36px;
+        right: 12px;
+        bottom: calc(62px + env(safe-area-inset-bottom, 0px));
+        border-radius: 8px;
+      }
+
+      /* --- ANIMATIONS --- */
+      .reveal,
+      .reveal-left,
+      .reveal-right {
+        transform: translateY(20px);
+      }
+
+      .reveal-left {
+        transform: translateX(-20px);
+      }
+
+      .reveal-right {
+        transform: translateX(20px);
+      }
+
+      /* --- SECTION BLUE mobile gradient --- */
+      .section-blue {
+        background: linear-gradient(135deg, rgba(16, 42, 67, 0.7), rgba(31, 122, 224, 0.55)),
+          url("Vivu.jpg") center / cover no-repeat;
       }
     }
 
@@ -2582,6 +3091,44 @@
       html { scroll-behavior: auto; }
     }
 
+    @media (max-width: 480px) {
+      .combo-bento {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 200px;
+      }
+      .combo-bento .bento-card:nth-child(1),
+      .combo-bento .bento-card:nth-child(2),
+      .combo-bento .bento-card:nth-child(n+3),
+      .combo-bento .bento-card:last-child:nth-child(odd) {
+        grid-column: span 1;
+      }
+
+      .bento-card .bento-name {
+        font-size: 18px;
+      }
+
+      .bento-card .bento-desc {
+        font-size: 12px;
+        -webkit-line-clamp: 3;
+      }
+
+      .support-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-card {
+        border-radius: 14px;
+      }
+
+      .flight-top {
+        margin-bottom: 12px;
+      }
+
+      .cta .kicker {
+        font-size: 11px;
+      }
+    }
+
     @media (max-width: 380px) {
       h1 {
         font-size: 22px;
@@ -2589,6 +3136,54 @@
 
       .hero p {
         font-size: 14px;
+      }
+
+      .hero-content {
+        padding: 72px 0 20px;
+      }
+
+      .hero-actions .btn {
+        min-height: 44px;
+        padding: 0 10px;
+        font-size: 13px;
+      }
+
+      .metrics {
+        gap: 8px;
+      }
+
+      .bp {
+        aspect-ratio: 2 / 1;
+        border-radius: 8px;
+      }
+
+      .bp-city {
+        font-size: clamp(9px, 2.8vw, 12px);
+      }
+
+      .bp-country {
+        font-size: clamp(6px, 1.8vw, 9px);
+      }
+
+      .bp-badge {
+        font-size: 5px;
+        padding: 1px 4px;
+      }
+
+      .bp-barcode {
+        height: 10px;
+      }
+
+      .stat-number {
+        font-size: 18px;
+      }
+
+      .stat-suffix {
+        font-size: 14px;
+      }
+
+      .stat-label {
+        font-size: 9px;
       }
 
       .flight-route {
@@ -2609,6 +3204,30 @@
       .brand img {
         height: 24px;
       }
+
+      .section {
+        padding: 40px 0;
+      }
+
+      .intro-copy p {
+        font-size: 13px;
+      }
+
+      .contact-item b {
+        font-size: 13px;
+      }
+
+      .contact-item span {
+        font-size: 11px;
+      }
+
+      .explore-card {
+        flex: 0 0 130px;
+      }
+      .explore-card img {
+        width: 130px;
+        height: 130px;
+      }
     }
   </style>
 </head>
@@ -2626,7 +3245,7 @@
   <header class="header">
     <div class="container nav">
       <a class="brand" href="#home" aria-label="SilverSky — Signature Journey">
-        <img src="Logo/PNG/Asset%2012@6x.png" alt="SilverSky — Signature Journey" width="2412" height="650" decoding="async">
+        <img src="Logo/PNG/Asset%2012@6x.png" alt="SilverSky — Signature Journey" width="2412" height="650" decoding="async" fetchpriority="high">
       </a>
 
       <nav class="links" id="navLinks" aria-label="Điều hướng chính">
@@ -2941,6 +3560,9 @@
                 <div class="flight-point"><div class="flight-city">SGN</div><div class="flight-sub">TP. HCM</div></div>
               </div>
             </div>
+            <div class="flight-card-image-center">
+              <img src="ảnh minh hoạ VN.png" alt="Boarding Pass - From the World to Vietnam">
+            </div>
             <div class="flight-card" style="border-bottom: none; padding-top: 16px; padding-bottom: 20px;">
               <div class="list-title" style="margin-bottom: 8px;">Đường bay nội địa chủ yếu</div>
               <ul class="check-list xkld-list" style="font-size: 13px;">
@@ -2961,6 +3583,9 @@
                 <div class="flight-point"><div class="flight-city">INT</div><div class="flight-sub">Quốc tế</div></div>
               </div>
             </div>
+            <div class="flight-card-image-center">
+              <img src="minh hoạ Việt Nam - Thế GIới.png" alt="Boarding Pass - Vietnam to World">
+            </div>
             <div class="flight-card" style="border-bottom: none; padding-top: 16px; padding-bottom: 20px;">
               <div class="list-title" style="margin-bottom: 8px;">Đường bay quốc tế chủ yếu</div>
               <ul class="check-list xkld-list" style="font-size: 13px;">
@@ -2972,6 +3597,8 @@
             </div>
           </article>
         </div>
+
+
       </div>
     </section>
 
@@ -2986,11 +3613,11 @@
         </div>
 
         <div class="tabs" role="tablist" aria-label="Combo du lịch">
-          <button class="tab-btn active" type="button" data-tab="combo-nd">Combo nội địa</button>
-          <button class="tab-btn" type="button" data-tab="combo-qt">Combo quốc tế</button>
+          <button class="tab-btn active" type="button" role="tab" aria-selected="true" data-tab="combo-nd">Combo nội địa</button>
+          <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="combo-qt">Combo quốc tế</button>
         </div>
 
-        <div class="tab-panel active" id="combo-nd">
+        <div class="tab-panel active" id="combo-nd" role="tabpanel">
           <div class="combo-bento reveal">
             <div class="bento-card">
               <img loading="lazy" src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1200&q=80" alt="Phú Quốc">
@@ -3038,7 +3665,7 @@
           </div>
         </div>
 
-        <div class="tab-panel" id="combo-qt">
+        <div class="tab-panel" id="combo-qt" role="tabpanel">
           <div class="combo-bento reveal">
             <div class="bento-card">
               <img loading="lazy" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1200&q=80" alt="Nhật Bản">
@@ -3128,7 +3755,7 @@
             <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=400&q=80" alt="Pleiku"><h4>Pleiku</h4><span>Biển Hồ & Tây Nguyên</span></div>
             <div class="explore-card"><img loading="lazy" src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=400&q=80" alt="Yên Bái"><h4>Yên Bái</h4><span>Mù Cang Chải</span></div>
           </div>
-          <button class="explore-btn" onclick="this.previousElementSibling.scrollBy({left:400,behavior:'smooth'})">
+          <button class="explore-btn" id="exploreNext" type="button" aria-label="Xem thêm điểm đến">
             <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
           </button>
         </div>
@@ -3143,11 +3770,11 @@
         </div>
 
         <div class="tabs" role="tablist" aria-label="Tour du lịch">
-          <button class="tab-btn active" type="button" data-tab="tour-nd">Tour nội địa</button>
-          <button class="tab-btn" type="button" data-tab="tour-qt">Tour quốc tế</button>
+          <button class="tab-btn active" type="button" role="tab" aria-selected="true" data-tab="tour-nd">Tour nội địa</button>
+          <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="tour-qt">Tour quốc tế</button>
         </div>
 
-        <div class="tab-panel active" id="tour-nd">
+        <div class="tab-panel active" id="tour-nd" role="tabpanel">
           <div class="combo-bento reveal">
             <div class="bento-card">
               <img loading="lazy" src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1200&q=80" alt="Phú Quốc">
@@ -3197,7 +3824,7 @@
           </div>
         </div>
 
-        <div class="tab-panel" id="tour-qt">
+        <div class="tab-panel" id="tour-qt" role="tabpanel">
           <div class="combo-bento reveal">
             <div class="bento-card">
               <img loading="lazy" src="https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&w=1200&q=80" alt="Hàn Quốc">
@@ -3261,7 +3888,7 @@
             <div class="contact-item"><span class="contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 11.19 19 19.5 19.5 0 0 1 5 12.81 19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.62 2.6a2 2 0 0 1-.45 2.11L8 9.66a16 16 0 0 0 6.34 6.34l1.23-1.23a2 2 0 0 1 2.11-.45c.83.29 1.7.5 2.6.62A2 2 0 0 1 22 16.92z"></path></svg></span><div><b>Hotline</b><span>0934 654 656</span></div></div>
             <div class="contact-item"><span class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"></path><path d="m22 6-10 7L2 6"></path></svg></span><div><b>Email</b><span>sales@silversky.vn / phongve@blueskyvietnam.com</span></div></div>
             <div class="contact-item"><span class="contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15 15 0 0 1 0 20"></path><path d="M12 2a15 15 0 0 0 0 20"></path></svg></span><div><b>Website</b><span>blueskyvietnam.com / silversky.vn</span></div></div>
-            <div class="contact-item"><span class="contact-icon"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path></svg></span><div><b>Group Zalo</b><span><a href="https://zalo.me/g/57lcapypguczxiaeff6o" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Tham gia Group Zalo</a></span></div></div>
+            <div class="contact-item"><span class="contact-icon"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path></svg></span><div><b>Group Zalo</b><span><a href="https://zalo.me/g/57lcapypguczxiaeff6o" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Tham gia Group Zalo</a></span></div></div>
             <div class="contact-item"><span class="contact-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span><div><b>Trụ sở</b><span>105 Nghi Tàm, phường Tây Hồ, Hà Nội</span></div></div>
           </div>
         </div>
@@ -3270,19 +3897,19 @@
           <div class="form-grid">
             <div class="field">
               <label for="company">Tên công ty</label>
-              <input id="company" name="company" type="text" placeholder="Nhập tên đại lý / công ty du lịch">
+              <input id="company" name="company" type="text" placeholder="Nhập tên đại lý / công ty du lịch" autocomplete="organization" required maxlength="200">
             </div>
             <div class="field">
               <label for="contact">Người liên hệ</label>
-              <input id="contact" name="contact" type="text" placeholder="Nhập họ tên">
+              <input id="contact" name="contact" type="text" placeholder="Nhập họ tên" autocomplete="name" required maxlength="100">
             </div>
             <div class="field">
               <label for="phone">Số điện thoại</label>
-              <input id="phone" name="phone" type="tel" placeholder="Nhập số điện thoại">
+              <input id="phone" name="phone" type="tel" placeholder="Nhập số điện thoại" autocomplete="tel" required maxlength="15">
             </div>
             <div class="field">
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="Nhập email">
+              <input id="email" name="email" type="email" placeholder="Nhập email" autocomplete="email" required maxlength="100">
             </div>
             <div class="field">
               <label for="market">Nhu cầu</label>
@@ -3296,11 +3923,11 @@
             </div>
             <div class="field">
               <label for="volume">Quy mô</label>
-              <input id="volume" name="volume" type="text" placeholder="Ví dụ: 20 khách">
+              <input id="volume" name="volume" type="text" placeholder="Ví dụ: 20 khách" maxlength="50">
             </div>
             <div class="field full">
               <label for="message">Thông tin cần báo giá</label>
-              <textarea id="message" name="message" placeholder="Ví dụ: Đoàn 20 khách Hà Nội - Phú Quốc, 4N3Đ, cần vé + resort 4 sao, tháng 8"></textarea>
+              <textarea id="message" name="message" placeholder="Ví dụ: Đoàn 20 khách Hà Nội - Phú Quốc, 4N3Đ, cần vé + resort 4 sao, tháng 8" maxlength="2000"></textarea>
             </div>
             <div class="field full">
               <button class="btn btn-primary" type="submit" style="width:100%">Gửi yêu cầu báo giá</button>
@@ -3324,13 +3951,13 @@
     <a class="fc-btn fc-phone" href="tel:0934654656" aria-label="Gọi điện">
       <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
     </a>
-    <a class="fc-btn fc-zalo" href="https://zalo.me/g/57lcapypguczxiaeff6o" target="_blank" rel="noopener" aria-label="Chat Zalo">
+    <a class="fc-btn fc-zalo" href="https://zalo.me/g/57lcapypguczxiaeff6o" target="_blank" rel="noopener noreferrer" aria-label="Chat Zalo">
       <span class="fc-zalo-text">Zalo</span>
     </a>
     <a class="fc-btn fc-email" href="mailto:sales@silversky.vn" aria-label="Gửi Email">
       <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg>
     </a>
-    <a class="fc-btn fc-web" href="https://blueskyvietnam.com" target="_blank" rel="noopener" aria-label="Website">
+    <a class="fc-btn fc-web" href="https://blueskyvietnam.com" target="_blank" rel="noopener noreferrer" aria-label="Website">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
     </a>
   </div>
@@ -3346,17 +3973,26 @@
     const contactForm = document.getElementById("contactForm");
     const formNote = document.getElementById("formNote");
     const tabButtons = document.querySelectorAll(".tab-btn");
-    const tabPanels = document.querySelectorAll(".tab-panel");
     const header = document.querySelector(".header");
 
     menuToggle.addEventListener("click", () => {
       const isOpen = navLinks.classList.toggle("open");
+      menuToggle.classList.toggle("active", isOpen);
       menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!navLinks.contains(e.target) && !menuToggle.contains(e.target) && navLinks.classList.contains("open")) {
+        navLinks.classList.remove("open");
+        menuToggle.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
     });
 
     navLinks.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         navLinks.classList.remove("open");
+        menuToggle.classList.remove("active");
         menuToggle.setAttribute("aria-expanded", "false");
       });
     });
@@ -3364,11 +4000,18 @@
     tabButtons.forEach((button) => {
       button.addEventListener("click", () => {
         const target = button.dataset.tab;
+        const tablist = button.closest("[role='tablist']");
+        const siblings = tablist.querySelectorAll(".tab-btn");
 
-        tabButtons.forEach((item) => item.classList.remove("active"));
-        tabPanels.forEach((panel) => panel.classList.remove("active"));
+        siblings.forEach((item) => {
+          item.classList.remove("active");
+          item.setAttribute("aria-selected", "false");
+          const panel = document.getElementById(item.dataset.tab);
+          if (panel) panel.classList.remove("active");
+        });
 
         button.classList.add("active");
+        button.setAttribute("aria-selected", "true");
         document.getElementById(target).classList.add("active");
       });
     });
@@ -3436,6 +4079,10 @@
 
     document.querySelectorAll(".stat-number").forEach((el) => {
       statObserver.observe(el);
+    });
+
+    document.getElementById("exploreNext").addEventListener("click", function() {
+      this.previousElementSibling.scrollBy({ left: 400, behavior: "smooth" });
     });
   </script>
 </body>
